@@ -2,9 +2,6 @@
 //  SceneDelegate.swift
 //  realmTest
 //
-//  Created by 東純己 on 2021/09/10.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

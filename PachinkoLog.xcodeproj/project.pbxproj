@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E20D0282272700F300C0D001 /* EditHallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D0281272700F300C0D001 /* EditHallViewController.swift */; };
+		E20D028827277F2300C0D001 /* HallEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */; };
+		E20D028A27278C2700C0D001 /* HallEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */; };
+		E20D028C2727FDD900C0D001 /* DetailLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */; };
+		E20D028E2728011700C0D001 /* LogCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D028D2728011700C0D001 /* LogCalc.swift */; };
+		E20D029027294EC600C0D001 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D028F27294EC500C0D001 /* HowToUseViewController.swift */; };
+		E20D02B427380D5F00C0D001 /* AtermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D02B327380D5D00C0D001 /* AtermViewController.swift */; };
+		E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1126EBA304000C038D /* AppDelegate.swift */; };
+		E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1326EBA304000C038D /* SceneDelegate.swift */; };
+		E2664E1626EBA304000C038D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1526EBA304000C038D /* ViewController.swift */; };
+		E2664E1926EBA304000C038D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2664E1726EBA304000C038D /* Main.storyboard */; };
+		E2664E1B26EBA30E000C038D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2664E1A26EBA30E000C038D /* Assets.xcassets */; };
+		E2664E1E26EBA30E000C038D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2664E1C26EBA30E000C038D /* LaunchScreen.storyboard */; };
+		E2664E2726EBA4A6000C038D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E2664E2626EBA4A6000C038D /* RealmSwift */; };
+		E2664E2926EBA4A6000C038D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E2664E2826EBA4A6000C038D /* Realm */; };
+		E2664E2B26EBA5E6000C038D /* MachineTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E2A26EBA5E6000C038D /* MachineTable.swift */; };
+		E2664E2F26EC6FE9000C038D /* machineName.csv in Resources */ = {isa = PBXBuildFile; fileRef = E2664E2E26EC6FE9000C038D /* machineName.csv */; };
+		E2664E3326F0D99F000C038D /* ConditionsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E3226F0D99F000C038D /* ConditionsInput.swift */; };
+		E2664E5A26F36B30000C038D /* CurrentLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E5926F36B30000C038D /* CurrentLogViewController.swift */; };
+		E2664E5E26F438F6000C038D /* PlayLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E5D26F438F6000C038D /* PlayLogViewController.swift */; };
+		E2664E6126F4D42B000C038D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E2664E6026F4D42B000C038D /* FSCalendar */; };
+		E26B2F9E26FCB5910051607A /* ResultTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B2F9D26FCB5910051607A /* ResultTable.swift */; };
+		E26B2FA326FE08E90051607A /* PlayLogCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */; };
+		E26B2FA426FE08E90051607A /* PlayLogCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */; };
+		E2E92786270DCB3D00618779 /* BonusAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */; };
+		E2E92787270DCB3D00618779 /* BonusAmountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */; };
+		E2E927962711D12100618779 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927942711D12100618779 /* LogTableViewCell.swift */; };
+		E2E927972711D12100618779 /* LogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E927952711D12100618779 /* LogTableViewCell.xib */; };
+		E2E9279B2712B91C00618779 /* Calc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9279A2712B91C00618779 /* Calc.swift */; };
+		E2E927B12715B8C600618779 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927B02715B8C600618779 /* TabBarController.swift */; };
+		E2E927B9271FC17C00618779 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927B8271FC17C00618779 /* DetailViewController.swift */; };
+		E2E927BC272037B800618779 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927BA272037B700618779 /* DetailTableViewCell.swift */; };
+		E2E927BD272037B800618779 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E927BB272037B700618779 /* DetailTableViewCell.xib */; };
+		E2F939E927047DBA00230852 /* HallTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F939E827047DBA00230852 /* HallTable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E2E927AB271491F000618779 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E20D0281272700F300C0D001 /* EditHallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHallViewController.swift; sourceTree = "<group>"; };
+		E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallEditTableViewCell.swift; sourceTree = "<group>"; };
+		E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HallEditTableViewCell.xib; sourceTree = "<group>"; };
+		E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLogViewController.swift; sourceTree = "<group>"; };
+		E20D028D2728011700C0D001 /* LogCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCalc.swift; sourceTree = "<group>"; };
+		E20D028F27294EC500C0D001 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
+		E20D02B327380D5D00C0D001 /* AtermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtermViewController.swift; sourceTree = "<group>"; };
+		E2664E0E26EBA304000C038D /* PachinkoLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PachinkoLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2664E1126EBA304000C038D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E2664E1326EBA304000C038D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E2664E1526EBA304000C038D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2664E1826EBA304000C038D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E2664E1A26EBA30E000C038D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E2664E1D26EBA30E000C038D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E2664E1F26EBA30E000C038D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2664E2A26EBA5E6000C038D /* MachineTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineTable.swift; sourceTree = "<group>"; };
+		E2664E2E26EC6FE9000C038D /* machineName.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = machineName.csv; sourceTree = "<group>"; };
+		E2664E3226F0D99F000C038D /* ConditionsInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsInput.swift; sourceTree = "<group>"; };
+		E2664E5926F36B30000C038D /* CurrentLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLogViewController.swift; sourceTree = "<group>"; };
+		E2664E5D26F438F6000C038D /* PlayLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLogViewController.swift; sourceTree = "<group>"; };
+		E26B2F9D26FCB5910051607A /* ResultTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTable.swift; sourceTree = "<group>"; };
+		E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLogCellTableViewCell.swift; sourceTree = "<group>"; };
+		E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayLogCellTableViewCell.xib; sourceTree = "<group>"; };
+		E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusAmountTableViewCell.swift; sourceTree = "<group>"; };
+		E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusAmountTableViewCell.xib; sourceTree = "<group>"; };
+		E2E927942711D12100618779 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		E2E927952711D12100618779 /* LogTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogTableViewCell.xib; sourceTree = "<group>"; };
+		E2E9279A2712B91C00618779 /* Calc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc.swift; sourceTree = "<group>"; };
+		E2E927B02715B8C600618779 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E2E927B8271FC17C00618779 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E2E927BA272037B700618779 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		E2E927BB272037B700618779 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		E2F939E827047DBA00230852 /* HallTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallTable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E2664E0B26EBA304000C038D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2664E2926EBA4A6000C038D /* Realm in Frameworks */,
+				E2664E6126F4D42B000C038D /* FSCalendar in Frameworks */,
+				E2664E2726EBA4A6000C038D /* RealmSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E2664E0526EBA303000C038D = {
+			isa = PBXGroup;
+			children = (
+				E2664E1026EBA304000C038D /* realmTest */,
+				E2664E0F26EBA304000C038D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E2664E0F26EBA304000C038D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2664E0E26EBA304000C038D /* PachinkoLog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E2664E1026EBA304000C038D /* realmTest */ = {
+			isa = PBXGroup;
+			children = (
+				E20D02B327380D5D00C0D001 /* AtermViewController.swift */,
+				E20D028F27294EC500C0D001 /* HowToUseViewController.swift */,
+				E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */,
+				E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */,
+				E20D0281272700F300C0D001 /* EditHallViewController.swift */,
+				E2E927BA272037B700618779 /* DetailTableViewCell.swift */,
+				E2E927BB272037B700618779 /* DetailTableViewCell.xib */,
+				E2664E1126EBA304000C038D /* AppDelegate.swift */,
+				E2664E1326EBA304000C038D /* SceneDelegate.swift */,
+				E2664E1526EBA304000C038D /* ViewController.swift */,
+				E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */,
+				E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */,
+				E2F939E827047DBA00230852 /* HallTable.swift */,
+				E2664E2A26EBA5E6000C038D /* MachineTable.swift */,
+				E2664E2E26EC6FE9000C038D /* machineName.csv */,
+				E2664E1726EBA304000C038D /* Main.storyboard */,
+				E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */,
+				E2664E5D26F438F6000C038D /* PlayLogViewController.swift */,
+				E2664E3226F0D99F000C038D /* ConditionsInput.swift */,
+				E2664E5926F36B30000C038D /* CurrentLogViewController.swift */,
+				E2E927B8271FC17C00618779 /* DetailViewController.swift */,
+				E2E927B02715B8C600618779 /* TabBarController.swift */,
+				E2E9279A2712B91C00618779 /* Calc.swift */,
+				E20D028D2728011700C0D001 /* LogCalc.swift */,
+				E2E927942711D12100618779 /* LogTableViewCell.swift */,
+				E2E927952711D12100618779 /* LogTableViewCell.xib */,
+				E26B2F9D26FCB5910051607A /* ResultTable.swift */,
+				E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */,
+				E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */,
+				E2664E1A26EBA30E000C038D /* Assets.xcassets */,
+				E2664E1C26EBA30E000C038D /* LaunchScreen.storyboard */,
+				E2664E1F26EBA30E000C038D /* Info.plist */,
+			);
+			path = realmTest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2664E0D26EBA304000C038D /* PachinkoLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2664E2226EBA30E000C038D /* Build configuration list for PBXNativeTarget "PachinkoLog" */;
+			buildPhases = (
+				E2664E0A26EBA304000C038D /* Sources */,
+				E2664E0B26EBA304000C038D /* Frameworks */,
+				E2664E0C26EBA304000C038D /* Resources */,
+				E2E927AB271491F000618779 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PachinkoLog;
+			packageProductDependencies = (
+				E2664E2626EBA4A6000C038D /* RealmSwift */,
+				E2664E2826EBA4A6000C038D /* Realm */,
+				E2664E6026F4D42B000C038D /* FSCalendar */,
+			);
+			productName = realmTest;
+			productReference = E2664E0E26EBA304000C038D /* PachinkoLog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E2664E0626EBA303000C038D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					E2664E0D26EBA304000C038D = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = E2664E0926EBA303000C038D /* Build configuration list for PBXProject "PachinkoLog" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E2664E0526EBA303000C038D;
+			packageReferences = (
+				E2664E2526EBA4A6000C038D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				E2664E5F26F4D42B000C038D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
+			productRefGroup = E2664E0F26EBA304000C038D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2664E0D26EBA304000C038D /* PachinkoLog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2664E0C26EBA304000C038D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E20D028A27278C2700C0D001 /* HallEditTableViewCell.xib in Resources */,
+				E2664E1E26EBA30E000C038D /* LaunchScreen.storyboard in Resources */,
+				E2E927972711D12100618779 /* LogTableViewCell.xib in Resources */,
+				E2664E1B26EBA30E000C038D /* Assets.xcassets in Resources */,
+				E2664E1926EBA304000C038D /* Main.storyboard in Resources */,
+				E2E92787270DCB3D00618779 /* BonusAmountTableViewCell.xib in Resources */,
+				E26B2FA426FE08E90051607A /* PlayLogCellTableViewCell.xib in Resources */,
+				E2E927BD272037B800618779 /* DetailTableViewCell.xib in Resources */,
+				E2664E2F26EC6FE9000C038D /* machineName.csv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E2664E0A26EBA304000C038D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E20D028C2727FDD900C0D001 /* DetailLogViewController.swift in Sources */,
+				E2664E1626EBA304000C038D /* ViewController.swift in Sources */,
+				E20D0282272700F300C0D001 /* EditHallViewController.swift in Sources */,
+				E2E927BC272037B800618779 /* DetailTableViewCell.swift in Sources */,
+				E2F939E927047DBA00230852 /* HallTable.swift in Sources */,
+				E2E927962711D12100618779 /* LogTableViewCell.swift in Sources */,
+				E2E927B12715B8C600618779 /* TabBarController.swift in Sources */,
+				E2664E3326F0D99F000C038D /* ConditionsInput.swift in Sources */,
+				E2E9279B2712B91C00618779 /* Calc.swift in Sources */,
+				E2E92786270DCB3D00618779 /* BonusAmountTableViewCell.swift in Sources */,
+				E2E927B9271FC17C00618779 /* DetailViewController.swift in Sources */,
+				E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */,
+				E20D02B427380D5F00C0D001 /* AtermViewController.swift in Sources */,
+				E20D028E2728011700C0D001 /* LogCalc.swift in Sources */,
+				E20D028827277F2300C0D001 /* HallEditTableViewCell.swift in Sources */,
+				E20D029027294EC600C0D001 /* HowToUseViewController.swift in Sources */,
+				E2664E5A26F36B30000C038D /* CurrentLogViewController.swift in Sources */,
+				E26B2FA326FE08E90051607A /* PlayLogCellTableViewCell.swift in Sources */,
+				E2664E5E26F438F6000C038D /* PlayLogViewController.swift in Sources */,
+				E2664E2B26EBA5E6000C038D /* MachineTable.swift in Sources */,
+				E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */,
+				E26B2F9E26FCB5910051607A /* ResultTable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E2664E1726EBA304000C038D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2664E1826EBA304000C038D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E2664E1C26EBA30E000C038D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E2664E1D26EBA30E000C038D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E2664E2026EBA30E000C038D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E2664E2126EBA30E000C038D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2664E2326EBA30E000C038D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = LH6K36686L;
+				INFOPLIST_FILE = realmTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E2664E2426EBA30E000C038D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = LH6K36686L;
+				INFOPLIST_FILE = realmTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E2664E0926EBA303000C038D /* Build configuration list for PBXProject "PachinkoLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2664E2026EBA30E000C038D /* Debug */,
+				E2664E2126EBA30E000C038D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2664E2226EBA30E000C038D /* Build configuration list for PBXNativeTarget "PachinkoLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2664E2326EBA30E000C038D /* Debug */,
+				E2664E2426EBA30E000C038D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2664E2526EBA4A6000C038D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.14.0;
+			};
+		};
+		E2664E5F26F4D42B000C038D /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2664E2626EBA4A6000C038D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2664E2526EBA4A6000C038D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		E2664E2826EBA4A6000C038D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2664E2526EBA4A6000C038D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		E2664E6026F4D42B000C038D /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2664E5F26F4D42B000C038D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E2664E0626EBA303000C038D /* Project object */;
+}

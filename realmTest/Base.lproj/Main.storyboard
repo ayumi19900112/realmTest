@@ -891,13 +891,44 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDR-D9-dS2">
-                                        <rect key="frame" x="111.66666666666667" y="5" width="28.000000000000014" height="21"/>
+                                        <rect key="frame" x="167" y="5" width="28" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-HA-gMp">
-                                        <rect key="frame" x="111.66666666666667" y="31" width="28.000000000000014" height="21"/>
+                                        <rect key="frame" x="167" y="31" width="28" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YjH-1K-LJK" userLabel="CenterView">
+                                        <rect key="frame" x="195" y="0.0" width="0.0" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="bEK-yz-eGO"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="稼働日数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ir8-M2-40u">
+                                        <rect key="frame" x="200" y="5" width="70" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWY-F0-Phh">
+                                        <rect key="frame" x="357" y="5" width="28" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勝率" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rho-B9-OPl">
+                                        <rect key="frame" x="200" y="31" width="34.666666666666657" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVR-Bg-YeN">
+                                        <rect key="frame" x="345.66666666666669" y="31" width="39.333333333333314" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -905,14 +936,24 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
+                                    <constraint firstItem="Ir8-M2-40u" firstAttribute="centerY" secondItem="ec8-99-FQ0" secondAttribute="centerY" id="0CQ-dj-jMZ"/>
                                     <constraint firstItem="ec8-99-FQ0" firstAttribute="top" secondItem="IcB-1d-mWe" secondAttribute="top" constant="5" id="1Bt-bS-qsT"/>
-                                    <constraint firstItem="lDR-D9-dS2" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uOB-HA-gMp" secondAttribute="trailing" id="I3q-hE-czu"/>
-                                    <constraint firstItem="lDR-D9-dS2" firstAttribute="bottom" secondItem="ec8-99-FQ0" secondAttribute="bottom" id="Jiv-Y0-P2M"/>
-                                    <constraint firstItem="uOB-HA-gMp" firstAttribute="bottom" secondItem="cJf-zs-PNx" secondAttribute="bottom" id="Jki-xE-Eql"/>
+                                    <constraint firstItem="RWY-F0-Phh" firstAttribute="centerY" secondItem="ec8-99-FQ0" secondAttribute="centerY" id="5NC-pG-a7f"/>
+                                    <constraint firstAttribute="bottom" secondItem="YjH-1K-LJK" secondAttribute="bottom" id="65m-ey-WlX"/>
+                                    <constraint firstAttribute="trailing" secondItem="cVR-Bg-YeN" secondAttribute="trailing" constant="5" id="B7r-HW-y7C"/>
+                                    <constraint firstAttribute="trailing" secondItem="RWY-F0-Phh" secondAttribute="trailing" constant="5" id="D6U-nN-RDx"/>
+                                    <constraint firstItem="YjH-1K-LJK" firstAttribute="top" secondItem="IcB-1d-mWe" secondAttribute="top" id="OxX-Ks-yZw"/>
+                                    <constraint firstItem="Ir8-M2-40u" firstAttribute="leading" secondItem="lDR-D9-dS2" secondAttribute="trailing" constant="5" id="QdY-yH-5rR"/>
                                     <constraint firstAttribute="height" constant="60" id="RRU-Sz-iPM"/>
                                     <constraint firstItem="cJf-zs-PNx" firstAttribute="top" secondItem="ec8-99-FQ0" secondAttribute="bottom" constant="5" id="Srk-aQ-tIT"/>
-                                    <constraint firstItem="uOB-HA-gMp" firstAttribute="leading" secondItem="cJf-zs-PNx" secondAttribute="trailing" constant="20" id="aqX-nb-blo"/>
-                                    <constraint firstItem="lDR-D9-dS2" firstAttribute="leading" secondItem="ec8-99-FQ0" secondAttribute="trailing" constant="37.333333333333343" id="hhE-N1-ack"/>
+                                    <constraint firstItem="YjH-1K-LJK" firstAttribute="leading" secondItem="uOB-HA-gMp" secondAttribute="trailing" id="WSz-0o-K5o"/>
+                                    <constraint firstItem="uOB-HA-gMp" firstAttribute="centerY" secondItem="cJf-zs-PNx" secondAttribute="centerY" id="Zo1-Xe-JHg"/>
+                                    <constraint firstItem="Rho-B9-OPl" firstAttribute="leading" secondItem="uOB-HA-gMp" secondAttribute="trailing" constant="5" id="ayG-6U-UCn"/>
+                                    <constraint firstItem="lDR-D9-dS2" firstAttribute="centerY" secondItem="ec8-99-FQ0" secondAttribute="centerY" id="cBf-A7-nrf"/>
+                                    <constraint firstItem="YjH-1K-LJK" firstAttribute="leading" secondItem="lDR-D9-dS2" secondAttribute="trailing" id="e3f-WY-Nho"/>
+                                    <constraint firstItem="cVR-Bg-YeN" firstAttribute="centerY" secondItem="cJf-zs-PNx" secondAttribute="centerY" id="jHw-uz-8fN"/>
+                                    <constraint firstItem="YjH-1K-LJK" firstAttribute="centerX" secondItem="IcB-1d-mWe" secondAttribute="centerX" id="nZ5-Db-Yjq"/>
+                                    <constraint firstItem="Rho-B9-OPl" firstAttribute="centerY" secondItem="cJf-zs-PNx" secondAttribute="centerY" id="taF-Qf-y9L"/>
                                     <constraint firstItem="cJf-zs-PNx" firstAttribute="leading" secondItem="IcB-1d-mWe" secondAttribute="leading" constant="5" id="yBY-nk-fKc"/>
                                     <constraint firstItem="ec8-99-FQ0" firstAttribute="leading" secondItem="IcB-1d-mWe" secondAttribute="leading" constant="5" id="z9S-bx-Gda"/>
                                 </constraints>
@@ -937,9 +978,11 @@
                     <tabBarItem key="tabBarItem" tag="-1" title="収支" image="calendar" catalog="system" id="Xfw-YN-vRg"/>
                     <connections>
                         <outlet property="dailyLogTable" destination="nWB-AU-NPD" id="bQd-Ob-DQG"/>
+                        <outlet property="dayCountLabel" destination="RWY-F0-Phh" id="gCP-O1-bgq"/>
                         <outlet property="fsCalendar" destination="4hJ-7s-w5R" id="4NG-gc-LvP"/>
                         <outlet property="resultBOPLabel" destination="lDR-D9-dS2" id="I5l-6J-ri7"/>
                         <outlet property="resultWorkLabel" destination="uOB-HA-gMp" id="VDZ-sB-Oob"/>
+                        <outlet property="winRateLabel" destination="cVR-Bg-YeN" id="poS-j9-xQn"/>
                         <segue destination="zoj-o7-qLT" kind="presentation" identifier="ToDetailLog" id="bEX-hu-ZHm"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,8 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var dailyLogTable: UITableView!
     @IBOutlet weak var resultBOPLabel: UILabel!
     @IBOutlet weak var resultWorkLabel: UILabel!
+    @IBOutlet weak var dayCountLabel: UILabel!
+    @IBOutlet weak var winRateLabel: UILabel!
     
     
     let realm = try! Realm()
@@ -118,7 +120,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         let values = Calendar.current.dateComponents([Calendar.Component.month, Calendar.Component.year], from: self.fsCalendar.currentPage)
         let month = String(format: "%02d", values.month!)       // -> 0001
         let searchText = String(values.year!) + "/" + month
-        let calc = logList.filter("date BEGINSWITH[c] %@", "\(searchText)")
+        let calc = logList.filter("date BEGINSWITH[c] %@", "\(searchText)").sorted(byKeyPath: "date", ascending: true)
         var totalPlayResult = 0
         var totalWorkResult = 0
         for i in 0 ..< calc.count {
@@ -130,12 +132,40 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             resultBOPLabel.textColor = .blue
         }else if totalPlayResult < 0{
             resultBOPLabel.textColor = .red
+        }else{
+            resultBOPLabel.textColor = .black
         }
         resultWorkLabel.text = "\(logCalc.intFormat(num: totalWorkResult))円"
         if totalWorkResult > 0{
             resultWorkLabel.textColor = .blue
         }else if totalWorkResult < 0{
             resultWorkLabel.textColor = .red
+        }else{
+            resultWorkLabel.textColor = .black
+        }
+        var day = 0
+        var win = 0
+        var i = 0
+        while i < calc.count{
+            var total = calc[i].playResult
+            if i != 0{
+                while calc[i-1].date == calc[i].date && i < calc.count{
+                    total += calc[i].playResult
+                    i += 1
+                }
+            }
+            day += 1
+            
+            if total > 0{
+                win += 1
+            }
+            i += 1
+        }
+        dayCountLabel.text = "\(day)日"
+        if (Double(win) / Double(day)).isNaN == false{
+            winRateLabel.text = "\(round(Double(win) / Double(day) * 10000) / 100)%"
+        }else{
+            winRateLabel.text = "0.00%"
         }
     }
 

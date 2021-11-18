@@ -29,6 +29,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     var test = 0
     var logCalc = LogCalc()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //カレンダー
@@ -56,6 +57,10 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         self.dailyLogTable.rowHeight = UITableView.automaticDimension
 
         
+    }
+    // 完全に全ての読み込みが完了時に実行
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewDidLoad()
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -143,30 +148,41 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         }else{
             resultWorkLabel.textColor = .black
         }
-        var day = 0
-        var win = 0
-        var i = 0
-        while i < calc.count{
-            var total = calc[i].playResult
-            if i != 0{
-                while calc[i-1].date == calc[i].date && i < calc.count{
-                    total += calc[i].playResult
-                    i += 1
+        
+        //月間稼働日数と月間勝率
+        if calc.count != 0{
+            var dayArr = [""]
+            var totalArr = [0]
+            var day = ""
+            dayArr[0] = calc[0].date
+            day = calc[0].date
+            totalArr[0] = calc[0].playResult
+        
+            var total = calc[0].playResult
+            for i in 1 ..< calc.count{
+                if day == calc[i].date{
+                    totalArr[totalArr.count - 1] += calc[i].playResult
+                }else{
+                    totalArr.append(calc[i].playResult)
+                    dayArr.append(calc[i].date)
+                    day = calc[i].date
                 }
             }
-            day += 1
-            
-            if total > 0{
-                win += 1
+            print(dayArr)
+            print(totalArr)
+            dayCountLabel.text = "\(dayArr.count)日"
+            var win = 0
+            for i in 0 ..< totalArr.count{
+                if totalArr[i] > 0{
+                    win += 1
+                }
             }
-            i += 1
-        }
-        dayCountLabel.text = "\(day)日"
-        if (Double(win) / Double(day)).isNaN == false{
-            winRateLabel.text = "\(round(Double(win) / Double(day) * 10000) / 100)%"
+            winRateLabel.text = "\(round(Double(win) / Double(dayArr.count) * 10000) / 100)%"
         }else{
-            winRateLabel.text = "0.00%"
+            dayCountLabel.text = "0日"
+            winRateLabel.text = "0.0%"
         }
+
     }
 
     //MARK:- tableView

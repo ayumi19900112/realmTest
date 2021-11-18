@@ -157,8 +157,6 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             dayArr[0] = calc[0].date
             day = calc[0].date
             totalArr[0] = calc[0].playResult
-        
-            var total = calc[0].playResult
             for i in 1 ..< calc.count{
                 if day == calc[i].date{
                     totalArr[totalArr.count - 1] += calc[i].playResult

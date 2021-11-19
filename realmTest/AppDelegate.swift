@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Realmマイグレーション処理
       func migration() {
         // 次のバージョン（現バージョンが０なので、１をセット）
-        let nextSchemaVersion = 12
+        let nextSchemaVersion = 13
 
         // マイグレーション設定
         let config = Realm.Configuration(

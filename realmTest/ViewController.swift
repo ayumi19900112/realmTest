@@ -95,11 +95,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK:- searchBarの処理
     //  検索バーに入力があったら呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        var word = machineSearchBar.text!
+        word = word.applyingTransform(.hiraganaToKatakana, reverse: true)!      //ひらがなに変換
+        word = word.applyingTransform(.fullwidthToHalfwidth, reverse: false)!   //半角にへんかん
+        word = word.lowercased()            //小文字に変換
         if machineSearchBar.text == "" {
             machineNameList = realm.objects(MachineTable.self).sorted(byKeyPath: "id", ascending: false)
         } else {
-            machineNameList = realm.objects(MachineTable.self).filter("name LIKE '*\(machineSearchBar.text!)*'").sorted(byKeyPath: "id", ascending: false)
+            machineNameList = realm.objects(MachineTable.self).filter("name LIKE '*\(word)*' OR searchWord LIKE '*\(word)*'").sorted(byKeyPath: "id", ascending: false)
         }
+       print(word)
         machineNameTableView.reloadData()
     }
     

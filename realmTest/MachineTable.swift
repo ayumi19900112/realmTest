@@ -29,6 +29,8 @@ class MachineTable: Object {
     @objc dynamic var firstPlay: Double = 0.0
     //C時短　ありなら１　なしなら０
     @objc dynamic var c: Int = 0
+    //検索ワード
+    @objc dynamic var searchWord = ""
     
     //プライマリーキーの設定
     /*
@@ -74,7 +76,8 @@ class MachineTable: Object {
                                           , "probability": Double(splitStr[6])!
                                           , "playTime": Int(splitStr[7])!
                                           ,"firstPlay": Double(splitStr[8])!
-                                          , "c": Int(splitStr[9])!])
+                                          , "c": Int(splitStr[9])!
+                                          ,"searchWord": splitStr[10]])
         
  
         return result

@@ -166,8 +166,6 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                     day = calc[i].date
                 }
             }
-            print(dayArr)
-            print(totalArr)
             dayCountLabel.text = "\(dayArr.count)日"
             var win = 0
             for i in 0 ..< totalArr.count{

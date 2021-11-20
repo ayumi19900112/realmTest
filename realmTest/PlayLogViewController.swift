@@ -35,9 +35,14 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         //カレンダー
         fsCalendar.locale = Locale(identifier: "ja")
         self.fsCalendar.firstWeekday = 2
-        fsCalendar.appearance.titleWeekendColor = .red
+        //fsCalendar.appearance.titleWeekendColor = .red
         fsCalendar.dataSource = self
         fsCalendar.delegate = self
+        
+        fsCalendar.calendarWeekdayView.weekdayLabels[5].textColor = .red
+        fsCalendar.calendarWeekdayView.weekdayLabels[6].textColor = .red
+        fsCalendar.placeholderType = .none
+        
         self.fsCalendar.reloadData()
         
         //realm
@@ -55,6 +60,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         self.dailyLogTable.delegate = self
         self.dailyLogTable.estimatedRowHeight = 110
         self.dailyLogTable.rowHeight = UITableView.automaticDimension
+        dailyLogTable.reloadData()
 
         
     }
@@ -72,6 +78,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 $0.removeFromSuperview()
             }
         }
+        
         let printDate = dateFormat(date: date)
         let dayResult = realm.objects(ResultTable.self).filter("date = %@", printDate)
         var bop = 0

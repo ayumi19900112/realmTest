@@ -50,7 +50,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         hallList = realm.objects(HallTable.self)
         machineList = realm.objects(MachineTable.self)
         calendarCurrentPageDidChange(fsCalendar)
-        let date = Date()
+        //let date = Date()
         event = logList.filter("date == %@", dateFormat(date: Date()))
         
         //tableview
@@ -61,6 +61,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         self.dailyLogTable.estimatedRowHeight = 110
         self.dailyLogTable.rowHeight = UITableView.automaticDimension
         dailyLogTable.reloadData()
+        
 
         
     }
@@ -284,6 +285,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             }
             dailyLogTable.reloadData()
             self.fsCalendar.reloadData()
+            self.viewDidLoad()
         })
         // キャンセル処理
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{

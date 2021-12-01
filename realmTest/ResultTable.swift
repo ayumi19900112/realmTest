@@ -21,7 +21,6 @@ class ResultTable: Object {
     @objc dynamic var workResult : Int = 0
     //スタート
     @objc dynamic var start : Int = 0
-    
     //大当たり回数
     @objc dynamic var bonusCount: String = ""
     //大当たり出玉
@@ -36,6 +35,8 @@ class ResultTable: Object {
     @objc dynamic var rateBall: Double = 0.0
     //使用玉数
     @objc dynamic var inPOS: Int = 0
+    //差玉
+    @objc dynamic var defference: Int = 0
  
     @objc dynamic var memo: String = ""
 

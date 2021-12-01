@@ -1,0 +1,231 @@
+
+/* Class = "UITextField"; text = "0"; ObjectID = "0mL-lc-3DK"; */
+"0mL-lc-3DK.text" = "0";
+
+/* Class = "UITabBarItem"; title = "使い方"; ObjectID = "1tt-bs-m9i"; */
+"1tt-bs-m9i.title" = "使い方";
+
+/* Class = "UILabel"; text = "ホール名"; ObjectID = "267-si-diG"; */
+"267-si-diG.text" = "ホール名";
+
+/* Class = "UILabel"; text = "回転率"; ObjectID = "2EQ-Mc-Mf5"; */
+"2EQ-Mc-Mf5.text" = "回転率";
+
+/* Class = "UILabel"; text = "回転"; ObjectID = "2dY-qz-EvL"; */
+"2dY-qz-EvL.text" = "回転";
+
+/* Class = "UILabel"; text = "スタート"; ObjectID = "4cn-Rp-cq6"; */
+"4cn-Rp-cq6.text" = "スタート";
+
+/* Class = "UILabel"; text = "開始時持ち玉（貯玉含む）"; ObjectID = "57I-G2-0of"; */
+"57I-G2-0of.text" = "開始時持ち玉（貯玉含む）";
+
+/* Class = "UIButton"; normalTitle = "計算してみる"; ObjectID = "6pG-e2-Unr"; */
+"6pG-e2-Unr.normalTitle" = "計算してみる";
+
+/* Class = "UILabel"; text = "現在スタート"; ObjectID = "8ku-bH-BLc"; */
+"8ku-bH-BLc.text" = "現在スタート";
+
+/* Class = "UIButton"; normalTitle = "プライバシーポリシー・お問い合わせ"; ObjectID = "983-0E-m44"; */
+"983-0E-m44.normalTitle" = "プライバシーポリシー・お問い合わせ";
+
+/* Class = "UILabel"; text = "交換率"; ObjectID = "9kA-Vw-a4T"; */
+"9kA-Vw-a4T.text" = "交換率";
+
+/* Class = "UILabel"; text = "0円"; ObjectID = "A9A-Ng-uZj"; */
+"A9A-Ng-uZj.text" = "0円";
+
+/* Class = "UILabel"; text = "持ち玉比率"; ObjectID = "BC1-86-xJb"; */
+"BC1-86-xJb.text" = "持ち玉比率";
+
+/* Class = "UILabel"; text = "仕事量"; ObjectID = "D4s-W4-XpN"; */
+"D4s-W4-XpN.text" = "仕事量";
+
+/* Class = "UINavigationItem"; title = "ログ中…"; ObjectID = "EOA-1u-BZx"; */
+"EOA-1u-BZx.title" = "ログ中…";
+
+/* Class = "UILabel"; text = "玉"; ObjectID = "EmS-Nc-OSq"; */
+"EmS-Nc-OSq.text" = "玉";
+
+/* Class = "UIButton"; normalTitle = "登録する"; ObjectID = "FjD-0Y-UcS"; */
+"FjD-0Y-UcS.normalTitle" = "登録する";
+
+/* Class = "UILabel"; text = "稼働日数"; ObjectID = "Ir8-M2-40u"; */
+"Ir8-M2-40u.text" = "稼働日数";
+
+/* Class = "UILabel"; text = "当アプリの合法性、正確性、最新性、適切性、著作権の許諾や有無など、その内容については一切の保証を致しかねます。\n当アプリの利用につき、何らかのトラブルや損失・損害につきましては一切責任を負いかねます。\n当アプリのコンテンツはできる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。\n当アプリの使用は自己判断でお願い致します。"; ObjectID = "Itc-eC-dLS"; */
+"Itc-eC-dLS.text" = "当アプリの合法性、正確性、最新性、適切性、著作権の許諾や有無など、その内容については一切の保証を致しかねます。\n当アプリの利用につき、何らかのトラブルや損失・損害につきましては一切責任を負いかねます。\n当アプリのコンテンツはできる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。\n当アプリの使用は自己判断でお願い致します。";
+
+/* Class = "UIButton"; normalTitle = "詳細/保存/リセット"; ObjectID = "JOP-ZZ-Zhc"; */
+"JOP-ZZ-Zhc.normalTitle" = "詳細/保存/リセット";
+
+/* Class = "UISearchBar"; placeholder = "機種名を入力"; ObjectID = "JSc-tZ-eam"; */
+"JSc-tZ-eam.placeholder" = "機種名を入力";
+
+/* Class = "UINavigationItem"; title = "機種を選択してください"; ObjectID = "Kcq-0Q-qZb"; */
+"Kcq-0Q-qZb.title" = "機種を選択してください";
+
+/* Class = "UILabel"; text = "機種名"; ObjectID = "M0c-D3-EHT"; */
+"M0c-D3-EHT.text" = "機種名";
+
+/* Class = "UILabel"; text = "貯玉含む現在持ち玉（玉）"; ObjectID = "Nxt-ih-qPi"; */
+"Nxt-ih-qPi.text" = "貯玉含む現在持ち玉（玉）";
+
+/* Class = "UILabel"; text = "開始時スタート"; ObjectID = "Owa-rl-CzR"; */
+"Owa-rl-CzR.text" = "開始時スタート";
+
+/* Class = "UILabel"; text = "交換率："; ObjectID = "PKD-l7-yxL"; */
+"PKD-l7-yxL.text" = "交換率：";
+
+/* Class = "UIButton"; normalTitle = "リセット"; ObjectID = "PZy-91-cnP"; */
+"PZy-91-cnP.normalTitle" = "リセット";
+
+/* Class = "UILabel"; text = "0円"; ObjectID = "Qwf-0N-GdS"; */
+"Qwf-0N-GdS.text" = "0円";
+
+/* Class = "UILabel"; text = "0日"; ObjectID = "RWY-F0-Phh"; */
+"RWY-F0-Phh.text" = "0日";
+
+/* Class = "UILabel"; text = "勝率"; ObjectID = "Rho-B9-OPl"; */
+"Rho-B9-OPl.text" = "勝率";
+
+/* Class = "UILabel"; text = "計算結果"; ObjectID = "Teu-rz-BQ9"; */
+"Teu-rz-BQ9.text" = "計算結果";
+
+/* Class = "UILabel"; text = "ホールを下の中から選んでタップ"; ObjectID = "UQG-mK-Og8"; */
+"UQG-mK-Og8.text" = "ホールを下の中から選んでタップ";
+
+/* Class = "UILabel"; text = "hallName"; ObjectID = "Uwb-7C-lUA"; */
+"Uwb-7C-lUA.text" = "hallName";
+
+/* Class = "UIButton"; normalTitle = "基準で設定"; ObjectID = "VPN-LL-7Ix"; */
+"VPN-LL-7Ix.normalTitle" = "基準で設定";
+
+/* Class = "UINavigationItem"; title = "使い方"; ObjectID = "WYW-Ut-O3l"; */
+"WYW-Ut-O3l.title" = "使い方";
+
+/* Class = "UILabel"; text = "貸し玉"; ObjectID = "WyO-1N-Z4X"; */
+"WyO-1N-Z4X.text" = "貸し玉";
+
+/* Class = "UILabel"; text = "収支"; ObjectID = "XNt-z4-xux"; */
+"XNt-z4-xux.text" = "収支";
+
+/* Class = "UILabel"; text = "詳細表示"; ObjectID = "XRI-rz-OzB"; */
+"XRI-rz-OzB.text" = "詳細表示";
+
+/* Class = "UITabBarItem"; title = "収支"; ObjectID = "Xfw-YN-vRg"; */
+"Xfw-YN-vRg.title" = "収支";
+
+/* Class = "UITabBarItem"; title = "ログる"; ObjectID = "YD2-4Y-m6u"; */
+"YD2-4Y-m6u.title" = "ログる";
+
+/* Class = "UILabel"; text = "詳細"; ObjectID = "Ye5-di-d51"; */
+"Ye5-di-d51.text" = "詳細";
+
+/* Class = "UITabBarItem"; title = "ホール登録/編集"; ObjectID = "Zfk-T2-73R"; */
+"Zfk-T2-73R.title" = "ホール登録/編集";
+
+/* Class = "UILabel"; text = "machineName"; ObjectID = "apo-Xf-Mhc"; */
+"apo-Xf-Mhc.text" = "machineName";
+
+/* Class = "UILabel"; text = "円/"; ObjectID = "c7X-Qj-LnQ"; */
+"c7X-Qj-LnQ.text" = "円/";
+
+/* Class = "UILabel"; text = "月間仕事量"; ObjectID = "cJf-zs-PNx"; */
+"cJf-zs-PNx.text" = "月間仕事量";
+
+/* Class = "UILabel"; text = "0.0%"; ObjectID = "cVR-Bg-YeN"; */
+"cVR-Bg-YeN.text" = "0.0%";
+
+/* Class = "UINavigationItem"; title = "開始情報入力"; ObjectID = "cqG-Za-H9s"; */
+"cqG-Za-H9s.title" = "開始情報入力";
+
+/* Class = "UILabel"; text = "0回転"; ObjectID = "crP-aB-pNu"; */
+"crP-aB-pNu.text" = "0回転";
+
+/* Class = "UILabel"; text = "0.0回転"; ObjectID = "d3x-Q3-N5i"; */
+"d3x-Q3-N5i.text" = "0.0回転";
+
+/* Class = "UILabel"; text = "玉"; ObjectID = "dAq-6R-HHM"; */
+"dAq-6R-HHM.text" = "玉";
+
+/* Class = "UILabel"; text = "分析"; ObjectID = "dXn-L2-vQw"; */
+"dXn-L2-vQw.text" = "分析";
+
+/* Class = "UILabel"; text = "玉/1,000円"; ObjectID = "e63-u1-snk"; */
+"e63-u1-snk.text" = "玉/1,000円";
+
+/* Class = "UITextField"; text = "200.0"; ObjectID = "eXM-OP-kMl"; */
+"eXM-OP-kMl.text" = "200.0";
+
+/* Class = "UILabel"; text = "月間収支"; ObjectID = "ec8-99-FQ0"; */
+"ec8-99-FQ0.text" = "月間収支";
+
+/* Class = "UILabel"; text = "番台"; ObjectID = "g6Z-df-nDP"; */
+"g6Z-df-nDP.text" = "番台";
+
+/* Class = "UILabel"; text = "大当たり"; ObjectID = "gSt-cU-GeK"; */
+"gSt-cU-GeK.text" = "大当たり";
+
+/* Class = "UIButton"; normalTitle = "使い方"; ObjectID = "gem-UG-pgp"; */
+"gem-UG-pgp.normalTitle" = "使い方";
+
+/* Class = "UILabel"; text = "玉"; ObjectID = "i09-5r-hAc"; */
+"i09-5r-hAc.text" = "玉";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "ia9-Fj-yzy"; */
+"ia9-Fj-yzy.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "免責事項"; ObjectID = "iac-LB-17z"; */
+"iac-LB-17z.normalTitle" = "免責事項";
+
+/* Class = "UIButton"; normalTitle = "ログ開始"; ObjectID = "kxv-2d-1Lx"; */
+"kxv-2d-1Lx.normalTitle" = "ログ開始";
+
+/* Class = "UILabel"; text = "大当たり出玉"; ObjectID = "l1s-Ym-6vX"; */
+"l1s-Ym-6vX.text" = "大当たり出玉";
+
+/* Class = "UILabel"; text = "0円"; ObjectID = "lDR-D9-dS2"; */
+"lDR-D9-dS2.text" = "0円";
+
+/* Class = "UILabel"; text = "ホール登録/編集"; ObjectID = "lTM-0T-ie1"; */
+"lTM-0T-ie1.text" = "ホール登録/編集";
+
+/* Class = "UILabel"; text = "台番号"; ObjectID = "mCf-7J-ZRe"; */
+"mCf-7J-ZRe.text" = "台番号";
+
+/* Class = "UILabel"; text = "ログ"; ObjectID = "nXO-bA-GCk"; */
+"nXO-bA-GCk.text" = "ログ";
+
+/* Class = "UILabel"; text = "0.0%"; ObjectID = "nnv-yY-h7D"; */
+"nnv-yY-h7D.text" = "0.0%";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "rnv-aO-sat"; */
+"rnv-aO-sat.text" = "0";
+
+/* Class = "UILabel"; text = "現金投資（円）"; ObjectID = "sEh-HU-30G"; */
+"sEh-HU-30G.text" = "現金投資（円）";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "sfb-SZ-gQI"; */
+"sfb-SZ-gQI.text" = "0";
+
+/* Class = "UITextField"; text = "0"; ObjectID = "txR-SS-lp1"; */
+"txR-SS-lp1.text" = "0";
+
+/* Class = "UILabel"; text = "0円"; ObjectID = "uOB-HA-gMp"; */
+"uOB-HA-gMp.text" = "0円";
+
+/* Class = "UITextField"; text = "50.0"; ObjectID = "v4d-vz-uZB"; */
+"v4d-vz-uZB.text" = "50.0";
+
+/* Class = "UITextField"; text = "250"; ObjectID = "vLV-S7-6oJ"; */
+"vLV-S7-6oJ.text" = "250";
+
+/* Class = "UISearchBar"; placeholder = "ホール名入力"; ObjectID = "wOI-nv-KcK"; */
+"wOI-nv-KcK.placeholder" = "ホール名入力";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "wd8-Ga-HcR"; */
+"wd8-Ga-HcR.normalTitle" = "保存";
+
+/* Class = "UILabel"; text = "円/"; ObjectID = "z5A-lb-ufR"; */
+"z5A-lb-ufR.text" = "円/";

@@ -19,7 +19,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let sectionTitle = ["プレイ条件", "投資", "スタート", "大当たり回数（理論値）"]
     
     let playList = ["稼働日", "稼働ホール", "交換率", "稼働機種", "台番号"]
-    let investmentList = ["現金投資", "開始時持ち玉", "終了時持ち玉", "差玉", "収支", "仕事量", "ツキ金額", "持ち玉比率"]
+    let investmentList = ["現金投資", "開始時持ち玉", "終了時持ち玉", "差玉", "収支", "仕事量", "損益金額", "持ち玉比率"]
     var startList = ["総回転数", "通常回転数", "回転率", "電サポ回転数", "電サポ比率"]
     var bonusNameList: [String]!
     var resultPlayList = ["", "", "", "", ""]
@@ -182,6 +182,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let rtRateBall = calc.getRateBall()
         let rtInPos = calc.getInPos()
         let rtNumber = calc.getNumber()
+        let rtDifference = calc.getDifference()
         
         
         let alert: UIAlertController = UIAlertController(title: "稼働終了しますか？", message: "保存してトップ画面に戻りますか？", preferredStyle:  UIAlertController.Style.alert)
@@ -191,7 +192,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             (action: UIAlertAction!) -> Void in
             let realm = try! Realm()
             
-            let result = ResultTable(value: ["date" : rtToday, "hallID": rtHallID, "machineID": rtMachineID, "playResult": rtPlayResult, "workResult": rtWrokResult, "start": rtStart, "bonusCount": rtBonusCount, "bonusAmount": rtBonusAmount, "investment": rtInvestment, "rental": rtRental, "rateMoney": rtRateMoney, "rateBall": rtRateBall, "inPOS": rtInPos, "memo": "", "number": rtNumber])
+            let result = ResultTable(value: ["date" : rtToday, "hallID": rtHallID, "machineID": rtMachineID, "playResult": rtPlayResult, "workResult": rtWrokResult, "start": rtStart, "bonusCount": rtBonusCount, "bonusAmount": rtBonusAmount, "investment": rtInvestment, "rental": rtRental, "rateMoney": rtRateMoney, "rateBall": rtRateBall, "inPOS": rtInPos, "memo": "", "number": rtNumber, "defference": rtDifference])
             try! realm.write{
                 realm.add(result)
             }

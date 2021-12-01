@@ -11,7 +11,7 @@ class DetailLogViewController: UIViewController, UITableViewDataSource, UITableV
 
     let sectionTitle = ["プレイ条件", "投資", "スタート", "大当たり回数", "大当たり出玉"]
     let playList = ["稼働日", "稼働ホール", "交換率", "稼働機種", "台番号"]
-    let investmentList = ["現金投資", "収支", "仕事量", "ツキ金額", "差玉", "持ち玉比率"]
+    let investmentList = ["現金投資", "収支", "仕事量", "損益金額", "差玉", "持ち玉比率"]
     var startList = ["総回転数", "通常回転数", "回転率", "電サポ回転数", "電サポ比率"]
     var bonusCountList: [String]!
     var bonusAmountList: [String]!
@@ -42,11 +42,6 @@ class DetailLogViewController: UIViewController, UITableViewDataSource, UITableV
         setBonusAmount()
         setStartList()
         
-        
-        print("resultBonusName = \(resultBonusNameList)")
-        print("resultBonusAmount = \(resultBonusAmountList)")
-        print("resultBonusCount = \(resultBonusCountList)")
-        // Do any additional setup after loading the view.
     }
     
     func setPlayList() {
@@ -171,4 +166,5 @@ class DetailLogViewController: UIViewController, UITableViewDataSource, UITableV
     
 
 }
+
 

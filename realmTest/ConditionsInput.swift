@@ -76,8 +76,101 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
             }
         }
     }
+    // MARK: - addHallButton
     
-    //MARK:- tableView
+    @IBAction func addHallButtonAction(_ sender: Any) {
+        
+        var flag = true
+        var addHallName = ""
+        var addRateMoney = 0.0
+        var addRateBall = 0.0
+        //アラートコントローラー
+        let alert = UIAlertController(title: "ホールを新たに追加します", message: "各項目を入力してください", preferredStyle: .alert)
+        
+        //OKボタンを追加
+        let okAction = UIAlertAction(title: "追加する", style: .default) { [self] (action:UIAlertAction) in
+            //複数のtextFieldのテキストを格納
+            guard let textFields:[UITextField] = alert.textFields else {return}
+            //textからテキストを取り出していく
+            for textField in textFields {
+                if textField.tag == 1 {
+                    if textField.text == ""{
+                        flag = false
+                    }else{
+                        addHallName = textField.text!
+                    }
+                }else if textField.tag == 2{
+                    if textField.text == "" && Double(textField.text!) == nil{
+                        flag = false
+                    }else{
+                        addRateMoney = Double(textField.text!)!
+                    }
+                }else{
+                    if textField.text == "" && Double(textField.text!) == nil{
+                        flag = false
+                    }else{
+                        addRateBall = Double(textField.text!)!
+                    }
+                }
+            }
+            
+            if flag == true{
+                let addHallTable = HallTable(value: ["id": createNewId(), "name": addHallName, "rateBall": addRateBall, "rateMoney": addRateMoney, "save": 0])
+                do{
+                    try realm.write{
+                        realm.add(addHallTable)
+                        printAlert(title: "追加成功", message: "追加できました")
+                    }
+                }catch {
+                  printAlert(title: "追加失敗", message: "数値が入力されていないか、テキストが入力されていない可能性がありました")
+                }
+                hallTableView.reloadData()
+            }else{
+                printAlert(title: "追加失敗", message: "数値が入力されていないか、テキストが入力されていない可能性がありました")
+            }
+            
+            
+        }
+        
+        alert.addAction(okAction)
+        //Cancelボタンを生成
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        //Cancelボタンを追加
+        alert.addAction(cancelAction)
+        
+        
+        //TextFieldを２つ追加
+        alert.addTextField { (text:UITextField!) in
+            text.placeholder = "ホール名"
+            //text.text = updateHallName
+            text.tag = 1
+        }
+        alert.addTextField { (text:UITextField!) in
+            text.placeholder = "交換率（円）"
+            //text.text = String(updateRateMoney)
+            text.keyboardType = .decimalPad
+            text.tag = 2
+        }
+        alert.addTextField { (text:UITextField!) in
+            text.placeholder = "交換率（玉）"
+            //text.text = String(updateRateBall)
+            text.keyboardType = .decimalPad
+            text.tag = 3
+        }
+        
+        //アラートを表示
+        present(alert, animated: true, completion: nil)
+        
+
+    }
+    
+    private func createNewId() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(HallTable.self).sorted(byKeyPath: "id", ascending: false).first?.id ?? 0) + 1
+    }
+    
+    
+    // MARK: - tableView
     //cellの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hallList.count
@@ -227,5 +320,12 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
             return false
         }
         return true
+    }
+    
+    func printAlert(title: String, message: String){
+        let alertController = UIAlertController(title: title,message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
     }
 }

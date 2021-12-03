@@ -97,7 +97,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         var updateRateBall = hallList[indexPath.row].rateBall
         var flag = true
         //アラートコントローラー
-        let alert = UIAlertController(title: "\(hallName)を更新します", message: "入力してください", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(hallName)を更新します", message: "各項目を入力してください", preferredStyle: .alert)
         var alertController: UIAlertController!
         //OKボタンを生成
         let okAction = UIAlertAction(title: "更新する", style: .default) { [self] (action:UIAlertAction) in
@@ -206,7 +206,6 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK:-Button
     
     @IBAction func addButton(_ sender: Any) {
-        // KING OF NORTHLAND黒部店
   
         if hallNameTextField.text == "" {
             printAlert(title: "エラー", message: "ホール名を入力してください")

@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		67322E135915CD42A12410E1 /* Pods_PachinkoLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D7A9B4FC115084964B9F6 /* Pods_PachinkoLog.framework */; };
-		E203CB4B274FA06D00CEEFEA /* LogResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB4A274FA06C00CEEFEA /* LogResultList.swift */; };
 		E203CB4F2753AF5200CEEFEA /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB4E2753AF5200CEEFEA /* DataResult.swift */; };
 		E203CB51275739D900CEEFEA /* AnalysisTotalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB50275739D900CEEFEA /* AnalysisTotalViewController.swift */; };
 		E203CB5427573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB5227573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.swift */; };
 		E203CB5527573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E203CB5327573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib */; };
+		E203CB572757635600CEEFEA /* AnalysisCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB562757635600CEEFEA /* AnalysisCategoryViewController.swift */; };
+		E203CB5A275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB58275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift */; };
+		E203CB5B275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E203CB59275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib */; };
+		E203CB5D2758288200CEEFEA /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB5C2758288100CEEFEA /* CategoryDetailViewController.swift */; };
+		E203CB602758FD8800CEEFEA /* CategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CB5E2758FD8800CEEFEA /* CategoryDetailTableViewCell.swift */; };
+		E203CB612758FD8800CEEFEA /* CategoryDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E203CB5F2758FD8800CEEFEA /* CategoryDetailTableViewCell.xib */; };
 		E20D0282272700F300C0D001 /* EditHallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D0281272700F300C0D001 /* EditHallViewController.swift */; };
 		E20D028827277F2300C0D001 /* HallEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */; };
 		E20D028A27278C2700C0D001 /* HallEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */; };
@@ -80,11 +85,16 @@
 		2407B8F15B9F9640A8215165 /* Pods-PachinkoLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PachinkoLog.debug.xcconfig"; path = "Target Support Files/Pods-PachinkoLog/Pods-PachinkoLog.debug.xcconfig"; sourceTree = "<group>"; };
 		787D7A9B4FC115084964B9F6 /* Pods_PachinkoLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PachinkoLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78ACEA555EA0E6F93D919256 /* Pods-PachinkoLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PachinkoLog.release.xcconfig"; path = "Target Support Files/Pods-PachinkoLog/Pods-PachinkoLog.release.xcconfig"; sourceTree = "<group>"; };
-		E203CB4A274FA06C00CEEFEA /* LogResultList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogResultList.swift; sourceTree = "<group>"; };
 		E203CB4E2753AF5200CEEFEA /* DataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
 		E203CB50275739D900CEEFEA /* AnalysisTotalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisTotalViewController.swift; sourceTree = "<group>"; };
 		E203CB5227573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisTotalCellTableViewCell.swift; sourceTree = "<group>"; };
 		E203CB5327573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisTotalCellTableViewCell.xib; sourceTree = "<group>"; };
+		E203CB562757635600CEEFEA /* AnalysisCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCategoryViewController.swift; sourceTree = "<group>"; };
+		E203CB58275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		E203CB59275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		E203CB5C2758288100CEEFEA /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		E203CB5E2758FD8800CEEFEA /* CategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E203CB5F2758FD8800CEEFEA /* CategoryDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDetailTableViewCell.xib; sourceTree = "<group>"; };
 		E20D0281272700F300C0D001 /* EditHallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHallViewController.swift; sourceTree = "<group>"; };
 		E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallEditTableViewCell.swift; sourceTree = "<group>"; };
 		E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HallEditTableViewCell.xib; sourceTree = "<group>"; };
@@ -159,7 +169,6 @@
 		E2664E0526EBA303000C038D = {
 			isa = PBXGroup;
 			children = (
-				E203CB4A274FA06C00CEEFEA /* LogResultList.swift */,
 				E2664E1026EBA304000C038D /* realmTest */,
 				E2664E0F26EBA304000C038D /* Products */,
 				8B7F081D67CFC6E0E4459841 /* Pods */,
@@ -200,6 +209,12 @@
 				E2664E2A26EBA5E6000C038D /* MachineTable.swift */,
 				E2664E2E26EC6FE9000C038D /* machineName.csv */,
 				E2664E1726EBA304000C038D /* Main.storyboard */,
+				E203CB5C2758288100CEEFEA /* CategoryDetailViewController.swift */,
+				E203CB5E2758FD8800CEEFEA /* CategoryDetailTableViewCell.swift */,
+				E203CB5F2758FD8800CEEFEA /* CategoryDetailTableViewCell.xib */,
+				E203CB562757635600CEEFEA /* AnalysisCategoryViewController.swift */,
+				E203CB58275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift */,
+				E203CB59275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib */,
 				E203CB50275739D900CEEFEA /* AnalysisTotalViewController.swift */,
 				E23D8429274BD6DD00067071 /* AnalysisViewController.swift */,
 				E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */,
@@ -298,10 +313,12 @@
 				E2E927972711D12100618779 /* LogTableViewCell.xib in Resources */,
 				E2664E1B26EBA30E000C038D /* Assets.xcassets in Resources */,
 				E2664E1926EBA304000C038D /* Main.storyboard in Resources */,
+				E203CB612758FD8800CEEFEA /* CategoryDetailTableViewCell.xib in Resources */,
 				E2220799274F5B8C00CF685F /* AnalysisTableViewCell.xib in Resources */,
 				E2E92787270DCB3D00618779 /* BonusAmountTableViewCell.xib in Resources */,
 				E26B2FA426FE08E90051607A /* PlayLogCellTableViewCell.xib in Resources */,
 				E2E927BD272037B800618779 /* DetailTableViewCell.xib in Resources */,
+				E203CB5B275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib in Resources */,
 				E2664E2F26EC6FE9000C038D /* machineName.csv in Resources */,
 				E203CB5527573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib in Resources */,
 			);
@@ -369,19 +386,22 @@
 				E2E9279B2712B91C00618779 /* Calc.swift in Sources */,
 				E2E92786270DCB3D00618779 /* BonusAmountTableViewCell.swift in Sources */,
 				E2E927B9271FC17C00618779 /* DetailViewController.swift in Sources */,
+				E203CB5A275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift in Sources */,
 				E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */,
 				E203CB51275739D900CEEFEA /* AnalysisTotalViewController.swift in Sources */,
+				E203CB602758FD8800CEEFEA /* CategoryDetailTableViewCell.swift in Sources */,
 				E20D02B427380D5F00C0D001 /* AtermViewController.swift in Sources */,
 				E20D028E2728011700C0D001 /* LogCalc.swift in Sources */,
 				E27454FA274DF69500A90771 /* AnalysisDetailViewController.swift in Sources */,
+				E203CB5D2758288200CEEFEA /* CategoryDetailViewController.swift in Sources */,
 				E20D028827277F2300C0D001 /* HallEditTableViewCell.swift in Sources */,
 				E20D029027294EC600C0D001 /* HowToUseViewController.swift in Sources */,
 				E2664E5A26F36B30000C038D /* CurrentLogViewController.swift in Sources */,
-				E203CB4B274FA06D00CEEFEA /* LogResultList.swift in Sources */,
 				E26B2FA326FE08E90051607A /* PlayLogCellTableViewCell.swift in Sources */,
 				E203CB4F2753AF5200CEEFEA /* DataResult.swift in Sources */,
 				E2664E5E26F438F6000C038D /* PlayLogViewController.swift in Sources */,
 				E2664E2B26EBA5E6000C038D /* MachineTable.swift in Sources */,
+				E203CB572757635600CEEFEA /* AnalysisCategoryViewController.swift in Sources */,
 				E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */,
 				E2220798274F5B8C00CF685F /* AnalysisTableViewCell.swift in Sources */,
 				E26B2F9E26FCB5910051607A /* ResultTable.swift in Sources */,

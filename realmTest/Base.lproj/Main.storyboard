@@ -1004,7 +1004,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlG-5r-8Kg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.6153846153845" y="864.45497630331749"/>
+            <point key="canvasLocation" x="1966" y="845"/>
         </scene>
         <!--使い方-->
         <scene sceneID="H4J-Qq-naa">
@@ -1057,7 +1057,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2u-bR-Pv8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069.2307692307693" y="1579.6208530805686"/>
+            <point key="canvasLocation" x="2875" y="1597"/>
         </scene>
         <!--How To Use View Controller-->
         <scene sceneID="QMW-se-TvE">
@@ -1169,7 +1169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pha-ME-8KU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067.6923076923076" y="2316.824644549763"/>
+            <point key="canvasLocation" x="2874" y="2334"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eNC-Jk-aww">
@@ -1202,7 +1202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsM-kr-cK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852" y="1580"/>
+            <point key="canvasLocation" x="3723" y="1597"/>
         </scene>
         <!--Detail Log View Controller-->
         <scene sceneID="4Gx-ZX-fwm">
@@ -1242,7 +1242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RN-i7-BK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890.7692307692307" y="863.74407582938386"/>
+            <point key="canvasLocation" x="2875" y="845"/>
         </scene>
         <!--分析-->
         <scene sceneID="gKL-lg-HDF">
@@ -1283,7 +1283,8 @@
                     <navigationItem key="navigationItem" title="分析" id="QWC-kW-qzT"/>
                     <connections>
                         <outlet property="categoryTable" destination="Wiq-cc-7Ua" id="LR8-50-xC4"/>
-                        <segue destination="0rh-ad-Kib" kind="show" identifier="ToAnalysisDetaiView" id="7dE-vi-T4u"/>
+                        <segue destination="0rh-ad-Kib" kind="show" identifier="ToAnalysisDetaiView" id="6ku-DJ-Ok6"/>
+                        <segue destination="bLg-lc-Xei" kind="show" identifier="ToAnalysisCategory" id="QnA-FG-RdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klN-uf-Tga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1563,7 +1564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSj-d6-oMV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-588"/>
+            <point key="canvasLocation" x="1066" y="-579"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WpO-MG-ob5">
@@ -1587,6 +1588,114 @@
             </objects>
             <point key="canvasLocation" x="1066.1538461538462" y="115.16587677725119"/>
         </scene>
+        <!--Analysis Category View Controller-->
+        <scene sceneID="QDM-Md-0xf">
+            <objects>
+                <viewController id="bLg-lc-Xei" customClass="AnalysisCategoryViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Ji-ue-1Bn">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-eh-8SZ">
+                                <rect key="frame" x="67.666666666666671" y="93" width="254.66666666666663" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="期間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8L-1r-G3m">
+                                        <rect key="frame" x="0.0" y="0.0" width="34.333333333333336" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="CZ7-XQ-M0k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Vhe-L5-HS0">
+                                        <rect key="frame" x="35.333333333333329" y="0.0" width="99.999999999999986" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="3h4-61-gIv"/>
+                                        </constraints>
+                                        <locale key="locale" localeIdentifier="ja_JP"/>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="〜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJi-Yb-BPy">
+                                        <rect key="frame" x="136.33333333333331" y="0.0" width="17.333333333333343" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="d79-Lu-qt6">
+                                        <rect key="frame" x="154.66666666666669" y="0.0" width="100" height="40"/>
+                                        <locale key="locale" localeIdentifier="ja_JP"/>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="d79-Lu-qt6" firstAttribute="height" secondItem="L8L-1r-G3m" secondAttribute="height" id="CNf-hd-VGD"/>
+                                    <constraint firstItem="d79-Lu-qt6" firstAttribute="width" secondItem="Vhe-L5-HS0" secondAttribute="width" id="ngb-e6-cNv"/>
+                                    <constraint firstItem="mJi-Yb-BPy" firstAttribute="height" secondItem="L8L-1r-G3m" secondAttribute="height" id="xCT-2o-WGd"/>
+                                    <constraint firstItem="Vhe-L5-HS0" firstAttribute="height" secondItem="L8L-1r-G3m" secondAttribute="height" id="xe9-iP-8bG"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kDZ-tq-BWg">
+                                <rect key="frame" x="0.0" y="143" width="390" height="618"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jBI-Tl-9H4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kDZ-tq-BWg" firstAttribute="leading" secondItem="jBI-Tl-9H4" secondAttribute="leading" id="6BU-3H-aE3"/>
+                            <constraint firstItem="jBI-Tl-9H4" firstAttribute="trailing" secondItem="kDZ-tq-BWg" secondAttribute="trailing" id="Fq9-fX-QeS"/>
+                            <constraint firstItem="Qwc-eh-8SZ" firstAttribute="top" secondItem="jBI-Tl-9H4" secondAttribute="top" constant="5" id="P3z-Ug-TBb"/>
+                            <constraint firstItem="jBI-Tl-9H4" firstAttribute="bottom" secondItem="kDZ-tq-BWg" secondAttribute="bottom" id="USF-gP-n7p"/>
+                            <constraint firstItem="Qwc-eh-8SZ" firstAttribute="centerX" secondItem="kDZ-tq-BWg" secondAttribute="centerX" id="YaU-WF-Zg8"/>
+                            <constraint firstItem="kDZ-tq-BWg" firstAttribute="top" secondItem="Qwc-eh-8SZ" secondAttribute="bottom" constant="10" id="eid-zs-0Gh"/>
+                            <constraint firstItem="Qwc-eh-8SZ" firstAttribute="leading" secondItem="jBI-Tl-9H4" secondAttribute="leading" constant="67.666666666666686" id="kk2-Zp-l0s"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="600-8h-bsL"/>
+                    <connections>
+                        <outlet property="analysisTableView" destination="kDZ-tq-BWg" id="6Lh-3b-bKj"/>
+                        <outlet property="datePickerBegin" destination="Vhe-L5-HS0" id="GYS-UC-BoR"/>
+                        <outlet property="datePickerFin" destination="d79-Lu-qt6" id="0y8-qd-Fg5"/>
+                        <segue destination="28e-QV-2tp" kind="presentation" identifier="ToCategoryDetailAnalysis" id="dXO-FR-Qys"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7nL-On-MkP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-972" y="1284"/>
+        </scene>
+        <!--Category Detail View Controller-->
+        <scene sceneID="aLg-KZ-wNC">
+            <objects>
+                <viewController id="28e-QV-2tp" customClass="CategoryDetailViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iMh-3W-aMT">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-bL-48g">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="28e-QV-2tp" id="hfQ-eQ-Ncd"/>
+                                    <outlet property="delegate" destination="28e-QV-2tp" id="HNm-yd-f3g"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2aS-Om-0qn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2aS-Om-0qn" firstAttribute="bottom" secondItem="Ct0-bL-48g" secondAttribute="bottom" id="3zP-An-lnO"/>
+                            <constraint firstItem="2aS-Om-0qn" firstAttribute="trailing" secondItem="Ct0-bL-48g" secondAttribute="trailing" id="ONB-jE-neD"/>
+                            <constraint firstItem="Ct0-bL-48g" firstAttribute="leading" secondItem="2aS-Om-0qn" secondAttribute="leading" id="UAn-fU-3AZ"/>
+                            <constraint firstItem="Ct0-bL-48g" firstAttribute="top" secondItem="2aS-Om-0qn" secondAttribute="top" id="Ugc-wy-tmA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="categoryDetailTableView" destination="Ct0-bL-48g" id="mug-cW-uLA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Gv-TH-rp2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="1282"/>
+        </scene>
         <!--使い方-->
         <scene sceneID="WxX-To-thC">
             <objects>
@@ -1604,7 +1713,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSD-WU-d2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="1579.6208530805686"/>
+            <point key="canvasLocation" x="1897" y="1597"/>
         </scene>
         <!--分析-->
         <scene sceneID="0Pm-CQ-zh4">
@@ -1623,7 +1732,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPG-7T-CiS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1737" y="542"/>
+            <point key="canvasLocation" x="-1977" y="542"/>
         </scene>
     </scenes>
     <resources>

@@ -14,7 +14,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     
     
-    let dataCategoryArray = ["トータル", "ホール別", "機種別","年別", "月別", "日別", "曜日別"]
+    let dataCategoryArray = ["トータル", "ホール別", "機種別"]
     var categoryNumber = 0
     
     override func viewDidLoad() {
@@ -38,8 +38,12 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     
     // Cell が選択された場合
     func tableView(_ table: UITableView,didSelectRowAt indexPath: IndexPath) {
-        categoryNumber = indexPath.row
+        if indexPath.row == 0{
             performSegue(withIdentifier: "ToAnalysisDetaiView",sender: nil)
+        }else{
+            categoryNumber = indexPath.row
+            performSegue(withIdentifier: "ToAnalysisCategory",sender: nil)
+        }
     }
     
     // Segue 準備
@@ -49,6 +53,9 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             // SubViewController のselectedImgに選択された画像を設定する
             subVC.categoryNumber = self.categoryNumber
             subVC.categoryList = self.dataCategoryArray
+        }else if segue.identifier == "ToAnalysisCategory"{
+            let subVC: AnalysisCategoryViewController = (segue.destination as? AnalysisCategoryViewController)!
+            subVC.categoryNumber = self.categoryNumber
         }
     }
 }

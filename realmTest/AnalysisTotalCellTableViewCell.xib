@@ -116,25 +116,25 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仕事量" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73M-6S-eZW">
-                        <rect key="frame" x="225" y="100" width="40" height="16"/>
+                        <rect key="frame" x="214" y="100" width="40" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="損益金額" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSI-Sf-RIC">
-                        <rect key="frame" x="211" y="121" width="54" height="16"/>
+                        <rect key="frame" x="200" y="121" width="54" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="差玉" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buc-Ft-64t">
-                        <rect key="frame" x="238" y="142" width="27" height="16"/>
+                        <rect key="frame" x="227" y="142" width="27" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持ち玉比率" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHF-uO-wAx">
-                        <rect key="frame" x="198" y="163" width="67" height="16"/>
+                        <rect key="frame" x="187" y="163" width="67" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                     <constraint firstItem="A2N-Fr-DhU" firstAttribute="trailing" secondItem="Rtk-oX-I1E" secondAttribute="trailing" id="T1Z-uC-G7L"/>
                     <constraint firstItem="J5T-to-NJ1" firstAttribute="top" secondItem="bhk-pi-d9N" secondAttribute="bottom" constant="5" id="URg-3c-B9W"/>
                     <constraint firstItem="e5l-wu-ENM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="UYz-J2-WyL"/>
-                    <constraint firstItem="J5T-to-NJ1" firstAttribute="leading" secondItem="CSI-Sf-RIC" secondAttribute="trailing" constant="20" id="VmC-4i-CeT"/>
+                    <constraint firstItem="oHF-uO-wAx" firstAttribute="leading" secondItem="fmd-V9-E0o" secondAttribute="trailing" constant="5" id="Vq9-d4-PBE"/>
                     <constraint firstItem="Pso-by-tQP" firstAttribute="trailing" secondItem="wvM-FW-h4a" secondAttribute="trailing" id="Ydm-of-pjg"/>
                     <constraint firstItem="J5T-to-NJ1" firstAttribute="centerY" secondItem="CSI-Sf-RIC" secondAttribute="centerY" id="ajG-Ra-fca"/>
                     <constraint firstItem="wvM-FW-h4a" firstAttribute="centerY" secondItem="Rtk-oX-I1E" secondAttribute="centerY" id="bpz-Y3-ANk"/>

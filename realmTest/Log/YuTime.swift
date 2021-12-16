@@ -84,7 +84,7 @@ class YuTime{
                 notYT += bonusNum[i] * bonusAmount[i]
                 yt += yutimeNum[i] * bonusAmount[i]
             }
-            var tenjoutoutaturitu = pow(1.0 - (1.0 / bonusProbability), (Double(yuCount) - Double(currentStart)))
+            var tenjoutoutaturitu = pow(1.0 - (1.0 / bonusProbability), Double(toYT))
             var tenjoukomiooatarikakuritu = 1.0/(1.0/bonusProbability/(1.0 - Double(tenjoutoutaturitu)))
             var heikintoushitamasuu = tenjoukomiooatarikakuritu / turnOver * 250.0
             var heikinkaishuutamasuu = (Double(tenjoutoutaturitu) * yt) + ((1.0 - Double(tenjoutoutaturitu)) * notYT)

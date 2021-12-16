@@ -505,7 +505,48 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func changeToYT(_ sender: Any) {
-        print("たっぷうされたy")
+        var alertTextField: UITextField?
+
+                let alert = UIAlertController(
+                    title: "到達までのスタート数を変更",
+                    message: "遊タイム到達スタート数\(machineList[0].playTime)回転",
+                    preferredStyle: UIAlertController.Style.alert)
+                alert.addTextField(
+                    configurationHandler: {(textField: UITextField!) in
+                        alertTextField = textField
+                        textField.text = String(self.yutime.toYT)
+                        textField.placeholder = "到達まであと何回転かを入力"
+                        textField.keyboardType = .numberPad
+                        // textField.isSecureTextEntry = true
+                })
+                alert.addAction(
+                    UIAlertAction(
+                        title: "Cancel",
+                        style: UIAlertAction.Style.cancel,
+                        handler: nil))
+                alert.addAction(
+                    UIAlertAction(
+                        title: "OK",
+                        style: UIAlertAction.Style.default) { _ in
+                        if let text = alertTextField?.text {
+                            self.ytCountResultLabel.text = text + "回転"
+                            self.yutime.toYT = Int(text)!
+                            if self.yutime.calcYuValue(){
+                                self.ytResultLabel.text = "\(self.calc.intFormat(num: self.yutime.yuValue))円"
+                                if self.yutime.yuValue > 0{
+                                    self.ytResultLabel.textColor = .blue
+                                }else if self.yutime.yuValue < 0{
+                                    self.ytResultLabel.textColor = .red
+                                }else{
+                                    self.ytResultLabel.textColor = .black
+                                }
+                            }
+                            
+                        }
+                    }
+                )
+
+                self.present(alert, animated: true, completion: nil)
     }
     
 }

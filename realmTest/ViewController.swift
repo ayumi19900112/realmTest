@@ -17,6 +17,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var realm = try! Realm()
     var machineNameList: Results<MachineTable>!
     var indexNum = Int()
+    var machine = Machine()
+    
+    var articles:[[String: Any]] = []
+    var machineList:[[String: Any]] = []{
+        didSet{
+            machineNameTableView.reloadData()
+        }
+    }
     
         
     
@@ -38,8 +46,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         doneToolbar.items = [spacer, doneButton]
         machineSearchBar.inputAccessoryView = doneToolbar
         
+        getMachineData()
         
         
+        /*
         //CSV読み込み
         let machine = MachineTable()
         let results = realm.objects(MachineTable.self)
@@ -59,60 +69,167 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("えらー")
             }
         }
+         */
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        getMachineData()
+        
+    }
 
     
-    // MARK:- TableViewの処理
+    // MARK: - TableViewの処理
     //tableViewに表示する行数を返す
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.machineNameList.count
+        return self.machineList.count
     }
     
     //tableViewに表示するセルの値を返す
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = machineNameTableView.dequeueReusableCell(withIdentifier: "MachineNameCell", for: indexPath)
         cell.textLabel?.numberOfLines = 0
-        let name = self.machineNameList[indexPath.row]
-        cell.textLabel?.text = "\(name.name)(1/\(name.probability))"
+        let name = self.machineList[indexPath.row]["name"]
+        cell.textLabel?.text = "\(self.machineList[indexPath.row]["name"] as! String)(1/\(self.machineList[indexPath.row]["probability"] as! String))"
         return cell
     }
 
-    // MARK:- segueの処理
+    // MARK: - segueの処理
     // セグエ実行前処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let index = self.machineNameTableView.indexPathForSelectedRow
-        //indexNum = idx!.row
-        
         machineNameTableView.deselectRow(at: index!, animated: true)
+        self.machine.setMachine(info: machineList[index!.row])
+        print(machine.bonusAmount)
+        var result = realm.objects(MachineTable.self).filter("id == %@", self.machine.id)
+        print("result", result)
+        print("machineID;", self.machine.id)
+        print(machineList[index!.row]["playTime"])
+        if result.count == 0{
+            let machineObject: MachineTable = MachineTable(value: ["id": machine.id,
+                                                                   "name": machine.name,
+                                                                   "bonusName": self.machineList[index!.row]["bonusName"] as! String,
+                                                                   "totalProbability": self.machineList[index!.row]["totalProbability"] as! String,
+                                                                   "bonusAmount": self.machineList[index!.row]["bonusAmount"] as! String,
+                                                                   "bonusRate": self.machineList[index!.row]["bonusRate"] as! String,
+                                                                   "probability": Double(self.machineList[index!.row]["probability"] as! String)!,
+                                                                   "playTime": Int(self.machineList[index!.row]["playTime"] as! String)!,
+                                                                   "firstPlay": Double(self.machineList[index!.row]["firstPlay"] as! String)!,
+                                                                   "c": Int(self.machineList[index!.row]["c"] as! String)!,
+                                                                   "searchWord": self.machineList[index!.row]["searchWord"] as! String])
+            try! realm.write{
+                realm.add(machineObject)
+            }
+        }else{
+            if result[0].totalProbability != self.machineList[index!.row]["totalProbability"] as! String{
+                try! realm.write{
+                    result.first?.totalProbability = self.machineList[index!.row]["totalProbability"] as! String
+                }
+            }
+            if result.first?.name != machine.name{
+                try! realm.write{
+                    result.first?.name = machine.name
+                }
+            }
+            if result.first?.bonusName != self.machineList[index!.row]["bonusName"] as! String{
+                try! realm.write{
+                    result.first?.bonusName = self.machineList[index!.row]["bonusName"] as! String
+                }
+            }
+            if result.first?.bonusAmount != self.machineList[index!.row]["bonusAmount"] as! String{
+                try! realm.write{
+                    result.first?.bonusAmount = self.machineList[index!.row]["bonusAmount"] as! String
+                }
+            }
+            if result.first?.bonusRate != self.machineList[index!.row]["bonusRate"] as! String{
+                try! realm.write{
+                    result.first?.bonusRate = self.machineList[index!.row]["bonusRate"] as! String
+                }
+            }
+            if result.first?.playTime != machine.playTime{
+                try! realm.write{
+                    result.first?.playTime = machine.playTime
+                }
+            }
+            if result.first?.c != machine.c{
+                try! realm.write{
+                    result.first?.c = machine.c
+                }
+            }
+            if result.first?.probability != machine.probability{
+                try! realm.write{
+                    result.first?.probability = machine.probability
+                }
+            }
+        }
+        
+        
+        
+        
         if segue.identifier == "toConditionsInput" {
+            
             let nextView = segue.destination as! ConditionsInput
-            nextView.machineID = Int(exactly: self.machineNameList[index!.row].id)!
+            //nextView.machineID = Int(exactly: self.machineNameList[index!.row].id)!
+            nextView.machineID = machine.id
         }
     }
     
-    // MARK:- searchBarの処理
+    // MARK: - searchBarの処理
     //  検索バーに入力があったら呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        search()
+    }
+         
+    
+    func search(){
         var word = machineSearchBar.text!
         word = word.applyingTransform(.hiraganaToKatakana, reverse: true)!      //ひらがなに変換
         word = word.applyingTransform(.fullwidthToHalfwidth, reverse: false)!   //半角にへんかん
         word = word.lowercased()            //小文字に変換
+        self.machineList = [[String: Any]]()
         if machineSearchBar.text == "" {
-            machineNameList = realm.objects(MachineTable.self).sorted(byKeyPath: "id", ascending: false)
+            //machineNameList = realm.objects(MachineTable.self).sorted(byKeyPath: "id", ascending: false)
+            self.machineList = self.articles
         } else {
-            machineNameList = realm.objects(MachineTable.self).filter("name LIKE '*\(word)*' OR searchWord LIKE '*\(word)*'").sorted(byKeyPath: "id", ascending: false)
+            //machineNameList = realm.objects(MachineTable.self).filter("name LIKE '*\(word)*' OR searchWord LIKE '*\(word)*'").sorted(byKeyPath: "id", ascending: false)
+            for i in 0 ..< articles.count{
+                let name = articles[i]["name"] as! String
+                let searchWord = articles[i]["searchWord"] as! String
+                if name.contains(word.lowercased()){
+                    self.machineList.append(self.articles[i])
+                }else if searchWord.contains(word.lowercased()){
+                    self.machineList.append(self.articles[i])
+                }
+            }
         }
-       print(word)
-        machineNameTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         self.machineSearchBar.endEditing(true)
     }
     
-    //MARK:- 完了ボタン
+    //MARK: - JSON
+    func getMachineData(){
+        let url: URL = URL(string: "http://pachinkolog.com/json.php")!
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+            do  {
+                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
+                //DispatchQueue.main.async() { () -> Void in
+                let articles = json.map { (article) -> [String: Any] in
+                    return article as! [String: Any]
+                }
+                DispatchQueue.main.async() { () -> Void in
+                    self.articles = articles
+                    self.machineList = articles
+                    self.search()
+                }
+            }catch {
+                print(error)
+            }
+        })
+        task.resume()
+    }
+    
+    //MARK: - 完了ボタン
     //完了ボタンタップ時に、キーボードを閉じる
     @objc
     func doneButtonTaped(sender: UIButton) {
@@ -120,6 +237,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
-
-
-

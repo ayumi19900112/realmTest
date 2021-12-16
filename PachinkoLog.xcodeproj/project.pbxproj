@@ -46,6 +46,9 @@
 		E26B2FA326FE08E90051607A /* PlayLogCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */; };
 		E26B2FA426FE08E90051607A /* PlayLogCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */; };
 		E27454FA274DF69500A90771 /* AnalysisDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27454F9274DF69500A90771 /* AnalysisDetailViewController.swift */; };
+		E2C09BF02760F5DC006FD575 /* Machine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C09BEF2760F5DC006FD575 /* Machine.swift */; };
+		E2C09BF82762F1D6006FD575 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C09BF72762F1D6006FD575 /* Log.swift */; };
+		E2C09BFA27652D5D006FD575 /* YuTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C09BF927652D5D006FD575 /* YuTime.swift */; };
 		E2E92786270DCB3D00618779 /* BonusAmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */; };
 		E2E92787270DCB3D00618779 /* BonusAmountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */; };
 		E2E927962711D12100618779 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927942711D12100618779 /* LogTableViewCell.swift */; };
@@ -122,6 +125,9 @@
 		E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayLogCellTableViewCell.swift; sourceTree = "<group>"; };
 		E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayLogCellTableViewCell.xib; sourceTree = "<group>"; };
 		E27454F9274DF69500A90771 /* AnalysisDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisDetailViewController.swift; sourceTree = "<group>"; };
+		E2C09BEF2760F5DC006FD575 /* Machine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Machine.swift; path = /Users/higashijunki/Desktop/Swift/realmTest/realmTest/Machine.swift; sourceTree = "<absolute>"; };
+		E2C09BF72762F1D6006FD575 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		E2C09BF927652D5D006FD575 /* YuTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YuTime.swift; sourceTree = "<group>"; };
 		E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusAmountTableViewCell.swift; sourceTree = "<group>"; };
 		E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusAmountTableViewCell.xib; sourceTree = "<group>"; };
 		E2E927942711D12100618779 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
@@ -187,54 +193,105 @@
 		E2664E1026EBA304000C038D /* realmTest */ = {
 			isa = PBXGroup;
 			children = (
-				E2220796274F5B8600CF685F /* AnalysisTableViewCell.swift */,
-				E2220797274F5B8B00CF685F /* AnalysisTableViewCell.xib */,
-				E203CB5227573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.swift */,
-				E203CB5327573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib */,
-				E20D02B327380D5D00C0D001 /* AtermViewController.swift */,
-				E27454F9274DF69500A90771 /* AnalysisDetailViewController.swift */,
-				E203CB4E2753AF5200CEEFEA /* DataResult.swift */,
-				E20D028F27294EC500C0D001 /* HowToUseViewController.swift */,
+				E2C09BEF2760F5DC006FD575 /* Machine.swift */,
 				E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */,
-				E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */,
-				E20D0281272700F300C0D001 /* EditHallViewController.swift */,
-				E2E927BA272037B700618779 /* DetailTableViewCell.swift */,
-				E2E927BB272037B700618779 /* DetailTableViewCell.xib */,
+				E2C09BF12760F5EE006FD575 /* Analysis */,
+				E2C09BF42760F7A2006FD575 /* HallEdit */,
 				E2664E1126EBA304000C038D /* AppDelegate.swift */,
 				E2664E1326EBA304000C038D /* SceneDelegate.swift */,
 				E2664E1526EBA304000C038D /* ViewController.swift */,
-				E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */,
-				E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */,
-				E2F939E827047DBA00230852 /* HallTable.swift */,
-				E2664E2A26EBA5E6000C038D /* MachineTable.swift */,
-				E2664E2E26EC6FE9000C038D /* machineName.csv */,
 				E2664E1726EBA304000C038D /* Main.storyboard */,
-				E203CB5C2758288100CEEFEA /* CategoryDetailViewController.swift */,
-				E203CB5E2758FD8800CEEFEA /* CategoryDetailTableViewCell.swift */,
-				E203CB5F2758FD8800CEEFEA /* CategoryDetailTableViewCell.xib */,
-				E203CB562757635600CEEFEA /* AnalysisCategoryViewController.swift */,
-				E203CB58275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift */,
-				E203CB59275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib */,
-				E203CB50275739D900CEEFEA /* AnalysisTotalViewController.swift */,
-				E23D8429274BD6DD00067071 /* AnalysisViewController.swift */,
 				E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */,
-				E2664E5D26F438F6000C038D /* PlayLogViewController.swift */,
-				E2664E3226F0D99F000C038D /* ConditionsInput.swift */,
-				E2664E5926F36B30000C038D /* CurrentLogViewController.swift */,
-				E2E927B8271FC17C00618779 /* DetailViewController.swift */,
+				E2C09BF22760F6CD006FD575 /* PlayLogCalendar */,
 				E2E927B02715B8C600618779 /* TabBarController.swift */,
-				E2E9279A2712B91C00618779 /* Calc.swift */,
+				E2C09BF527615584006FD575 /* Log */,
+				E2C09BF32760F75F006FD575 /* RealmObjects */,
 				E20D028D2728011700C0D001 /* LogCalc.swift */,
 				E2E927942711D12100618779 /* LogTableViewCell.swift */,
 				E2E927952711D12100618779 /* LogTableViewCell.xib */,
-				E26B2F9D26FCB5910051607A /* ResultTable.swift */,
-				E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */,
-				E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */,
 				E2664E1A26EBA30E000C038D /* Assets.xcassets */,
+				E2C09BF6276155D1006FD575 /* HowToUse */,
 				E2664E1C26EBA30E000C038D /* LaunchScreen.storyboard */,
 				E2664E1F26EBA30E000C038D /* Info.plist */,
 			);
 			path = realmTest;
+			sourceTree = "<group>";
+		};
+		E2C09BF12760F5EE006FD575 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				E27454F9274DF69500A90771 /* AnalysisDetailViewController.swift */,
+				E2220797274F5B8B00CF685F /* AnalysisTableViewCell.xib */,
+				E203CB5227573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.swift */,
+				E203CB5327573ABA00CEEFEA /* AnalysisTotalCellTableViewCell.xib */,
+				E203CB50275739D900CEEFEA /* AnalysisTotalViewController.swift */,
+				E2220796274F5B8600CF685F /* AnalysisTableViewCell.swift */,
+				E203CB58275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift */,
+				E203CB562757635600CEEFEA /* AnalysisCategoryViewController.swift */,
+				E203CB5E2758FD8800CEEFEA /* CategoryDetailTableViewCell.swift */,
+				E203CB5C2758288100CEEFEA /* CategoryDetailViewController.swift */,
+				E23D8429274BD6DD00067071 /* AnalysisViewController.swift */,
+				E203CB59275769F400CEEFEA /* AnalysisCategoryTableViewCell.xib */,
+				E203CB5F2758FD8800CEEFEA /* CategoryDetailTableViewCell.xib */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		E2C09BF22760F6CD006FD575 /* PlayLogCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				E2E927B8271FC17C00618779 /* DetailViewController.swift */,
+				E2664E5D26F438F6000C038D /* PlayLogViewController.swift */,
+			);
+			path = PlayLogCalendar;
+			sourceTree = "<group>";
+		};
+		E2C09BF32760F75F006FD575 /* RealmObjects */ = {
+			isa = PBXGroup;
+			children = (
+				E2664E2E26EC6FE9000C038D /* machineName.csv */,
+				E2664E2A26EBA5E6000C038D /* MachineTable.swift */,
+				E2F939E827047DBA00230852 /* HallTable.swift */,
+				E203CB4E2753AF5200CEEFEA /* DataResult.swift */,
+				E26B2F9D26FCB5910051607A /* ResultTable.swift */,
+			);
+			path = RealmObjects;
+			sourceTree = "<group>";
+		};
+		E2C09BF42760F7A2006FD575 /* HallEdit */ = {
+			isa = PBXGroup;
+			children = (
+				E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */,
+				E20D0281272700F300C0D001 /* EditHallViewController.swift */,
+			);
+			path = HallEdit;
+			sourceTree = "<group>";
+		};
+		E2C09BF527615584006FD575 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				E2E927BA272037B700618779 /* DetailTableViewCell.swift */,
+				E2E927BB272037B700618779 /* DetailTableViewCell.xib */,
+				E2E9279A2712B91C00618779 /* Calc.swift */,
+				E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */,
+				E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */,
+				E2664E5926F36B30000C038D /* CurrentLogViewController.swift */,
+				E2C09BF927652D5D006FD575 /* YuTime.swift */,
+				E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */,
+				E2664E3226F0D99F000C038D /* ConditionsInput.swift */,
+				E2C09BF72762F1D6006FD575 /* Log.swift */,
+				E2E92784270DCB3D00618779 /* BonusAmountTableViewCell.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		E2C09BF6276155D1006FD575 /* HowToUse */ = {
+			isa = PBXGroup;
+			children = (
+				E20D028F27294EC500C0D001 /* HowToUseViewController.swift */,
+				E20D02B327380D5D00C0D001 /* AtermViewController.swift */,
+			);
+			path = HowToUse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,12 +438,15 @@
 				E2E927BC272037B800618779 /* DetailTableViewCell.swift in Sources */,
 				E2F939E927047DBA00230852 /* HallTable.swift in Sources */,
 				E2E927962711D12100618779 /* LogTableViewCell.swift in Sources */,
+				E2C09BFA27652D5D006FD575 /* YuTime.swift in Sources */,
+				E2C09BF82762F1D6006FD575 /* Log.swift in Sources */,
 				E2E927B12715B8C600618779 /* TabBarController.swift in Sources */,
 				E2664E3326F0D99F000C038D /* ConditionsInput.swift in Sources */,
 				E2E9279B2712B91C00618779 /* Calc.swift in Sources */,
 				E2E92786270DCB3D00618779 /* BonusAmountTableViewCell.swift in Sources */,
 				E2E927B9271FC17C00618779 /* DetailViewController.swift in Sources */,
 				E203CB5A275769F400CEEFEA /* AnalysisCategoryTableViewCell.swift in Sources */,
+				E2C09BF02760F5DC006FD575 /* Machine.swift in Sources */,
 				E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */,
 				E203CB51275739D900CEEFEA /* AnalysisTotalViewController.swift in Sources */,
 				E203CB602758FD8800CEEFEA /* CategoryDetailTableViewCell.swift in Sources */,
@@ -555,7 +615,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH6K36686L;
 				INFOPLIST_FILE = realmTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -563,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 7;
 				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -578,7 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH6K36686L;
 				INFOPLIST_FILE = realmTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -586,7 +646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 7;
 				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

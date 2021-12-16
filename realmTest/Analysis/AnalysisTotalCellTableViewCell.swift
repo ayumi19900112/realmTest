@@ -83,7 +83,7 @@ class AnalysisTotalCellTableViewCell: UITableViewCell {
         }else{
             self.defferenceLabel.textColor = .darkGray
         }
-        let rate = Double((data.inPOS - data.investment * data.rental / 1000) / data.inPOS)
+        let rate = Double((data.investment * data.rental / 1000) / data.inPOS)
         self.rateBallLabel.text = "\(round(rate * 10000) / 100)%"
     }
     

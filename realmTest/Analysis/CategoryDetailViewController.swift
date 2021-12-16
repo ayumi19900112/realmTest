@@ -45,6 +45,10 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
         
+        dataArray.forEach{
+            print("収支", $0.bop)
+        }
+        
 
         // Do any additional setup after loading the view.
     }

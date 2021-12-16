@@ -114,15 +114,30 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
                 let data = DataResult()
                 data.setResult(data: resultPlay[i])
                 dataArray.append(data)
+                categoryDataArray.append(data)
             }
         }
+        
         
         if categoryNumber == 1{
             dataArray.sort{$0.hallID < $1.hallID}
         }else if categoryNumber == 2{
             dataArray.sort{$0.machineID < $1.machineID}
         }
-        categoryDataArray = dataArray
+        
+        //categoryDataArray = dataArray
+        print("1.categoryDataArray ")
+        categoryDataArray.forEach{
+            print("収支　", $0.bop)
+            print("スタート", $0.start)
+        }
+        print("1.dataArray ")
+        dataArray.forEach{
+            print("収支　", $0.bop)
+            print("スタート", $0.start)
+        }
+        
+
 
         
         
@@ -154,19 +169,15 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
                 }
             }
         }
-
-         
-        
-        
+        print("2.categoryDataArray ")
+        categoryDataArray.forEach{
+            print("収支　", $0.bop)
+            print("スタート", $0.start)
+        }
+        print("2.dataArray ")
         dataArray.forEach{
-            print("集計後")
-            //print($0.date)
-            print($0.hall)
-            print($0.bop)
-            print($0.work)
-            //print($0.machineName)
-            //print($0.defference)
-            //print($0.bonusCount)
+            print("収支　", $0.bop)
+            print("スタート", $0.start)
         }
         
         
@@ -194,7 +205,15 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CategoryDetailViewController {
             // 遷移先のクラスのプロパティに値を代入する
-            
+            categoryDataArray = [DataResult]()
+            for i in 0 ..< resultPlay.count{
+                let resultDate = dateFromString(string: resultPlay[i].date, format: "yyyy/MM/dd")
+                if resultDate >= datePickerBegin.date && resultDate <= datePickerFin.date{
+                    let data = DataResult()
+                    data.setResult(data: resultPlay[i])
+                    categoryDataArray.append(data)
+                }
+            }
             vc.dataArray = categoryDataArray
             vc.categoryNumber = self.categoryNumber
             vc.hallID = self.hallID

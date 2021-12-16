@@ -28,6 +28,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     var logFlag = ["開始"]      // 大当たり履歴
     var bonusCount: [Int] = []      //大当たり回数記録用
     var bonusAmountArray: [Double] = []
+    var yutime = YuTime()
     
     //Itemの紐付け
     //input
@@ -49,6 +50,11 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var resultBOPLabel: UILabel!              //収支
     @IBOutlet weak var resultWorkLabel: UILabel!             //仕事量
     @IBOutlet weak var resultHaveRate: UILabel!             //持ち玉比率
+    @IBOutlet weak var ytLabel: UILabel!
+    @IBOutlet weak var ytResultLabel: UILabel!
+    @IBOutlet weak var ytCountLabel: UILabel!
+    @IBOutlet weak var ytCountResultLabel: UILabel!
+    
     
     @IBOutlet weak var addTableButton: UIButton!        //結果を登録する
     
@@ -97,7 +103,6 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         setPickerList()
         //calcset
         bonusAmountArray = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
-        print("bonusAmountArray[] = \(bonusAmountArray)")
         setCalc()
         
         //bonusCountを0にする
@@ -107,6 +112,11 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //大当たり出玉のボタンタイトルをセット
         setAmountButton.setTitle("\(bonusName[1])基準で設定", for: .normal)
+        //遊タイムラベル
+        ytResultLabel.text = ""
+        ytLabel.text = ""
+        ytCountLabel.text = ""
+        ytCountResultLabel.text = ""
         /*
         for i in 0 ..< bonusRate.count{
             let amount = bonusAmount[1] * bonusRate[i]
@@ -181,7 +191,6 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     func textFieldDidEndEditing(textField: UITextField) {
       if let cell = textField.superview?.superview as? UITableViewCell,
          let indexPath = bonusTableView.indexPath(for: cell){
-        print("inidexPath.row = \(indexPath.row)")
       }
     }
 
@@ -202,7 +211,6 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         for i in 1 ..< strArr.count{
             strArr[i] = String(bonusAmountArray[i])
         }
-        print(strArr)
         do{
             try realm.write{
                 machineList[0].bonusAmount = strArr.joined(separator: "/")
@@ -292,9 +300,44 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         let dt = Date()
         let dateFormatter = DateFormatter()
 
-        // DateFormatter を使用して書式とロケールを指定する
+        // DateFormatter を使用して書式とロケールを指定する33
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "Hm", options: 0, locale: Locale(identifier: "ja_JP"))
         self.resultTimeLabel.text = "計算結果 \(dateFormatter.string(from: dt))"
+        
+        //遊タイム計算
+        yutime.machineID = self.machineID
+        yutime.rateBall = self.rateBall
+        yutime.rateMoney = self.rateMoney
+        yutime.haveBall = Int(currentBallTextField!.text!)!
+        yutime.bonusAmount = self.bonusAmountArray
+        yutime.bonusProbability = machineList[0].probability
+        yutime.currentStart = logStart.last!
+        yutime.turnOver = calc.getTurnOver()
+        yutime.yuCount = machineList[0].playTime
+        yutime.toYT = machineList[0].playTime - Int(logStart.last!)
+        yutime.rental = self.rental
+        
+        yutime.getData()
+        if yutime.calcYuValue(){
+            ytLabel.text = "YT期待値"
+            ytResultLabel.text = "\(calc.intFormat(num: yutime.yuValue))円"
+            if yutime.yuValue > 0{
+                ytResultLabel.textColor = .blue
+            }else if yutime.yuValue < 0{
+                ytResultLabel.textColor = .red
+            }else{
+                ytResultLabel.textColor = .black
+            }
+            ytCountLabel.text = "YTまで"
+            ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
+        }else{
+            ytLabel.text = ""
+            ytResultLabel.text = ""
+            ytCountLabel.text = ""
+            ytCountResultLabel.text = ""
+        }
+       
+        
     }
     
     
@@ -460,6 +503,9 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         return true
     }
-
-
+    
+    @IBAction func changeToYT(_ sender: Any) {
+        print("たっぷうされたy")
+    }
+    
 }

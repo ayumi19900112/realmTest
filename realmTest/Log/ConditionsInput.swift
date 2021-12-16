@@ -255,7 +255,7 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
             super.shouldPerformSegue(withIdentifier: "toCurrentLogView", sender: sender)
 
-            // When the switch is off, it cancels the segue. 
+            // When the switch is off, it cancels the segue.
             return hallSelect
         }
     

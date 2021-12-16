@@ -11,6 +11,8 @@ class BonusAmountTableViewCell: UITableViewCell {
     var pivotAmount = 0.0
     var machineID = 0
     
+    var amountArrayStr: [String]!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -76,6 +78,17 @@ class BonusAmountTableViewCell: UITableViewCell {
                 text = "-\(text)"
             }
             bonusAmountTextField.text = text
+            amountArrayStr[self.tag] = text
+            let realm = try! Realm()
+            let machineList = realm.objects(MachineTable.self).filter("id == %@", machineID).first
+            do{
+                try realm.write{
+                    machineList?.bonusAmount = amountArrayStr.joined(separator: "/")
+                }
+            }catch {
+                    print("Error")
+            }
+            
         }
     }
     
@@ -83,7 +96,7 @@ class BonusAmountTableViewCell: UITableViewCell {
         let realm = try! Realm()
         let machineList = realm.objects(MachineTable.self).filter("id == %@", machineID).first
         var amountArray = machineList!.bonusAmount.components(separatedBy: "/").map{Double($0)!}
-        var amountArrayStr = machineList!.bonusAmount.components(separatedBy: "/").map{($0)}
+        amountArrayStr = machineList!.bonusAmount.components(separatedBy: "/").map{($0)}
         if bonusAmountTextField.text != "" && Double(bonusAmountTextField.text!) != nil{
             amountArrayStr[self.tag] = bonusAmountTextField!.text!
         }else{

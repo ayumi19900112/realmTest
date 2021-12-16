@@ -201,9 +201,7 @@ class Calc{
     //投資玉÷250
     func getInPos() -> Int {
         let asMoney = Double(self.investment) / 1000.0 * Double(self.rental)
-        print("asMoney = \(asMoney)")
         let asBall = self.getBonusAmount(bonusCount: bonusCountList, bonusAmount:bonusAmountList) - self.currentPos + self.firstPos
-        print("asBall = \(asBall)")
         let collect = (asMoney + Double(asBall)) / 250.0
         return Int(collect * 250)
         
@@ -222,8 +220,10 @@ class Calc{
     //持ち玉比率
     func getHaveBallRate(money: Int) -> Double{
         let asMoney = Double(self.investment) / 1000.0 * Double(self.rental)
-        print("asMoney = \(asMoney)")
-        let rate = (1.0 - (asMoney / Double(getInPos()))) * 100.0
+        var rate = (1.0 - (asMoney / Double(getInPos()))) * 100.0
+        if rate < 0.0{
+            rate = 0.0
+        }
         return round(rate * 100) / 100
         
     }

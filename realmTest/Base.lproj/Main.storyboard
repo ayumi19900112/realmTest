@@ -1666,10 +1666,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qwc-eh-8SZ">
-                                <rect key="frame" x="67.666666666666671" y="93" width="254.66666666666663" height="40"/>
+                                <rect key="frame" x="6.6666666666666572" y="93" width="376.66666666666674" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="期間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8L-1r-G3m">
-                                        <rect key="frame" x="0.0" y="0.0" width="34.333333333333336" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CZ7-XQ-M0k"/>
                                         </constraints>
@@ -1678,22 +1678,38 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Vhe-L5-HS0">
-                                        <rect key="frame" x="35.333333333333329" y="0.0" width="99.999999999999986" height="40"/>
+                                        <rect key="frame" x="35.666666666666671" y="0.0" width="100.00000000000001" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="3h4-61-gIv"/>
                                         </constraints>
                                         <locale key="locale" localeIdentifier="ja_JP"/>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="〜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJi-Yb-BPy">
-                                        <rect key="frame" x="136.33333333333331" y="0.0" width="17.333333333333343" height="40"/>
+                                        <rect key="frame" x="136.66666666666669" y="0.0" width="17.333333333333343" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="d79-Lu-qt6">
-                                        <rect key="frame" x="154.66666666666669" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="155" y="0.0" width="100" height="40"/>
                                         <locale key="locale" localeIdentifier="ja_JP"/>
                                     </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-Jp-7Ia">
+                                        <rect key="frame" x="256" y="0.0" width="67" height="40"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="収支順"/>
+                                        <connections>
+                                            <action selector="sortKeyButton:" destination="bLg-lc-Xei" eventType="touchUpInside" id="JmW-3t-wBJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7j-uV-asl">
+                                        <rect key="frame" x="324" y="0.0" width="52.666666666666686" height="40"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="降順"/>
+                                        <connections>
+                                            <action selector="sortDescButton:" destination="bLg-lc-Xei" eventType="touchUpInside" id="wh9-l8-jcL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="d79-Lu-qt6" firstAttribute="height" secondItem="L8L-1r-G3m" secondAttribute="height" id="CNf-hd-VGD"/>
@@ -1702,8 +1718,8 @@
                                     <constraint firstItem="Vhe-L5-HS0" firstAttribute="height" secondItem="L8L-1r-G3m" secondAttribute="height" id="xe9-iP-8bG"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kDZ-tq-BWg">
-                                <rect key="frame" x="0.0" y="143" width="390" height="618"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kDZ-tq-BWg">
+                                <rect key="frame" x="0.0" y="209" width="390" height="552"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -1716,20 +1732,23 @@
                             <constraint firstItem="jBI-Tl-9H4" firstAttribute="bottom" secondItem="kDZ-tq-BWg" secondAttribute="bottom" id="USF-gP-n7p"/>
                             <constraint firstItem="Qwc-eh-8SZ" firstAttribute="centerX" secondItem="kDZ-tq-BWg" secondAttribute="centerX" id="YaU-WF-Zg8"/>
                             <constraint firstItem="kDZ-tq-BWg" firstAttribute="top" secondItem="Qwc-eh-8SZ" secondAttribute="bottom" constant="10" id="eid-zs-0Gh"/>
-                            <constraint firstItem="Qwc-eh-8SZ" firstAttribute="leading" secondItem="jBI-Tl-9H4" secondAttribute="leading" constant="67.666666666666686" id="kk2-Zp-l0s"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="600-8h-bsL"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="analysisTableView" destination="kDZ-tq-BWg" id="6Lh-3b-bKj"/>
                         <outlet property="datePickerBegin" destination="Vhe-L5-HS0" id="GYS-UC-BoR"/>
                         <outlet property="datePickerFin" destination="d79-Lu-qt6" id="0y8-qd-Fg5"/>
+                        <outlet property="sortDescButton" destination="M7j-uV-asl" id="hhq-Bc-BKY"/>
+                        <outlet property="sortKeyButton" destination="fOG-Jp-7Ia" id="W29-Yv-275"/>
                         <segue destination="28e-QV-2tp" kind="presentation" identifier="ToCategoryDetailAnalysis" id="dXO-FR-Qys"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nL-On-MkP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-972" y="1284"/>
+            <point key="canvasLocation" x="-972.30769230769226" y="1283.8862559241707"/>
         </scene>
         <!--Category Detail View Controller-->
         <scene sceneID="aLg-KZ-wNC">

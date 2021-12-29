@@ -84,6 +84,10 @@ class YuTime{
                 notYT += bonusNum[i] * bonusAmount[i]
                 yt += yutimeNum[i] * bonusAmount[i]
             }
+            if(toYT <= 0){
+                yuValue = Int(yt / Double(rateBall) * Double(rateMoney))
+                return flag
+            }
             var tenjoutoutaturitu = pow(1.0 - (1.0 / bonusProbability), Double(toYT))
             var tenjoukomiooatarikakuritu = 1.0/(1.0/bonusProbability/(1.0 - Double(tenjoutoutaturitu)))
             var heikintoushitamasuu = tenjoukomiooatarikakuritu / turnOver * 250.0

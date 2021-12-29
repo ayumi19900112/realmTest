@@ -133,10 +133,10 @@ class AnalysisTableViewCell: UITableViewCell {
         rateHavePlayLabel.text = "\(rate)%"
         avgBOPLabel.text = "\(calc.intFormat(num: bop / dateCount))円"
         avgWorkLabel.text = "\(calc.intFormat(num: work / dateCount))円"
-        luckLabel.text = "\(calc.intFormat(num: work - bop))円"
-        if (work - bop) > 0{
+        luckLabel.text = "\(calc.intFormat(num: bop - work))円"
+        if (bop - work) > 0{
             luckLabel.textColor = .blue
-        }else if (work - bop) < 0{
+        }else if (bop - work) < 0{
             luckLabel.textColor = .red
         }else{
             luckLabel.textColor = .darkGray

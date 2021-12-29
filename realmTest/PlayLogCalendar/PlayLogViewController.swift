@@ -258,7 +258,7 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     //日付のフォーマット指定
    func dateFormat(date: Date) -> String {
        let dateFormatter = DateFormatter()
-       dateFormatter.dateFormat = "YYYY/MM/dd"
+       dateFormatter.dateFormat = "yyyy/MM/dd"
        let text = dateFormatter.string(from: date)
        return text
    }

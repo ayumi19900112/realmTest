@@ -192,12 +192,42 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             (action: UIAlertAction!) -> Void in
             let realm = try! Realm()
             
-            let result = ResultTable(value: ["date" : rtToday, "hallID": rtHallID, "machineID": rtMachineID, "playResult": rtPlayResult, "workResult": rtWrokResult, "start": rtStart, "bonusCount": rtBonusCount, "bonusAmount": rtBonusAmount, "investment": rtInvestment, "rental": rtRental, "rateMoney": rtRateMoney, "rateBall": rtRateBall, "inPOS": rtInPos, "memo": "", "number": rtNumber, "defference": rtDifference])
+            let result = ResultTable(value: ["date": rtToday, "hallID": rtHallID, "machineID": rtMachineID, "playResult": rtPlayResult, "workResult": rtWrokResult, "start": rtStart, "bonusCount": rtBonusCount, "bonusAmount": rtBonusAmount, "investment": rtInvestment, "rental": rtRental, "rateMoney": rtRateMoney, "rateBall": rtRateBall, "inPOS": rtInPos, "memo": "", "number": rtNumber, "defference": rtDifference])
             try! realm.write{
                 realm.add(result)
             }
-            clv.returnTop()
-            dismiss(animated: true)
+            let alert2: UIAlertController = UIAlertController(title: "貯玉確認", message: "貯玉後:\(calc.getCurrentPos())玉", preferredStyle:  UIAlertController.Style.alert)
+            // OKボタン
+            let defaultAction2: UIAlertAction = UIAlertAction(title: "貯玉する", style: UIAlertAction.Style.default, handler:{ [self]
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+                let realm = try! Realm()
+                
+                let resultHall = realm.objects(HallTable.self).filter("name == %@", self.hallName).first
+                try! realm.write{
+                    resultHall?.save = calc.getCurrentPos()
+                }
+                let insert = InsertData()
+                insert.calc = self.calc
+                insert.insertData(hallName: self.hallName, machineID: getMachineID(name: self.machineName))
+                clv.returnTop()
+                dismiss(animated: true)
+            })
+            // キャンセルボタン
+            let cancelAction2: UIAlertAction = UIAlertAction(title: "貯玉しない", style: UIAlertAction.Style.cancel, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action2: UIAlertAction!) -> Void in
+                self.clv.returnTop()
+                self.dismiss(animated: true)
+            })
+            // ③ UIAlertControllerにActionを追加
+            alert2.addAction(cancelAction2)
+            alert2.addAction(defaultAction2)
+
+            // ④ Alertを表示
+            present(alert2, animated: true, completion: nil)
+            //clv.returnTop()
+            //dismiss(animated: true)
         })
         // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
@@ -211,6 +241,33 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // ④ Alertを表示
         present(alert, animated: true, completion: nil)
         
+        let alert2: UIAlertController = UIAlertController(title: "貯玉確認", message: "貯玉後:\(calc.getCurrentPos())玉", preferredStyle:  UIAlertController.Style.alert)
+        // OKボタン
+        let defaultAction2: UIAlertAction = UIAlertAction(title: "貯玉する", style: UIAlertAction.Style.default, handler:{ [self]
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            let realm = try! Realm()
+            
+            let resultHall = HallTable(value: ["save": calc.getCurrentPos()])
+            try! realm.write{
+                realm.add(resultHall)
+            }
+            clv.returnTop()
+            dismiss(animated: true)
+        })
+        // キャンセルボタン
+        let cancelAction2: UIAlertAction = UIAlertAction(title: "貯玉しない", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action2: UIAlertAction!) -> Void in
+            self.clv.returnTop()
+            self.dismiss(animated: true)
+        })
+        // ③ UIAlertControllerにActionを追加
+        alert2.addAction(cancelAction2)
+        alert2.addAction(defaultAction2)
+
+        // ④ Alertを表示
+        present(alert2, animated: true, completion: nil)
 
 
 
@@ -278,4 +335,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return strList.joined(separator: "/")
     }
+    
+    
 }

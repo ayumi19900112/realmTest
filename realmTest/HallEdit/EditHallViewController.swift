@@ -14,6 +14,8 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var rateBallTextField: UITextField!
     @IBOutlet weak var hallListTableView: UITableView!
     @IBOutlet weak var hallSearchBar: UISearchBar!
+    @IBOutlet weak var saveBallTextField: UITextField!
+    
     
     let realm = try! Realm()
     var hallList: Results<HallTable>!
@@ -21,7 +23,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         hallListTableView.register (UINib(nibName: "HallEditTableViewCell", bundle: nil),forCellReuseIdentifier:"HallCell")
-        hallList = realm.objects(HallTable.self)
+        hallList = realm.objects(HallTable.self).sorted(byKeyPath: "name")
         
         hallListTableView.dataSource = self
         hallListTableView.delegate = self
@@ -38,22 +40,29 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         hallNameTextField.inputAccessoryView = doneToolbar
         rateMoneyTextField.inputAccessoryView = doneToolbar
         rateBallTextField.inputAccessoryView = doneToolbar
+        saveBallTextField.inputAccessoryView = doneToolbar
         hallSearchBar.inputAccessoryView = doneToolbar
         
         let numberStr = ""
         print("変換 -> \(Double(numberStr))")
         //let numberDbl = Double(numberStr)
     }
-    //MARK:- 完了ボタン
+    
+    // 完全に全ての読み込みが完了時に実行
+    override func viewDidAppear(_ animated: Bool) {
+        self.hallListTableView.reloadData()
+    }
+    //MARK: - 完了ボタン
     //完了ボタンタップ時に、キーボードを閉じる
     @objc
     func doneButtonTaped(sender: UIButton) {
         hallNameTextField.endEditing(true)
         rateBallTextField.endEditing(true)
         rateMoneyTextField.endEditing(true)
+        saveBallTextField.endEditing(true)
         hallSearchBar.endEditing(true)
     }
-    //MARK:- TabelView
+    // MARK: - TabelView
     //Cellの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hallList.count
@@ -63,6 +72,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = hallListTableView.dequeueReusableCell(withIdentifier: "HallCell", for: indexPath) as! HallEditTableViewCell
         cell.setHallLabel(name: hallList[indexPath.row].name)
         cell.setRateLabel(money: hallList[indexPath.row].rateMoney, ball: hallList[indexPath.row].rateBall)
+        cell.setSave(save: hallList[indexPath.row].save, money: hallList[indexPath.row].rateMoney, ball: hallList[indexPath.row].rateBall)
         return cell
     }
     
@@ -95,6 +105,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         var updateHallName = hallList[indexPath.row].name
         var updateRateMoney = hallList[indexPath.row].rateMoney
         var updateRateBall = hallList[indexPath.row].rateBall
+        var updateSaveBall = hallList[indexPath.row].save
         var flag = true
         //アラートコントローラー
         let alert = UIAlertController(title: "\(hallName)を更新します", message: "各項目を入力してください", preferredStyle: .alert)
@@ -117,9 +128,18 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
                     }else{
                         flag = false
                     }
-                }else{
+                }else if textField.tag == 3{
                     if textField.text != "" && Double(textField.text!) != nil{
                         updateRateBall = Double(textField.text!)!
+                    }else{
+                        flag = false
+                    }
+                }else if textField.tag == 4{
+                    if textField.text == ""{
+                        textField.text = "0"
+                    }
+                    if textField.text != "" && Int(textField.text!) != nil{
+                        updateSaveBall = Int(textField.text!)!
                     }else{
                         flag = false
                     }
@@ -132,6 +152,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
                         target?.name = updateHallName
                         target?.rateMoney = updateRateMoney
                         target?.rateBall = updateRateBall
+                        target?.save = updateSaveBall
                         printAlert(title: "更新成功", message: "更新できました")
                     }
                 }catch {
@@ -168,6 +189,12 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
             text.keyboardType = .decimalPad
             text.tag = 3
         }
+        alert.addTextField { (text:UITextField!) in
+            text.placeholder = "貯玉（玉）"
+            text.text = String(updateSaveBall)
+            text.keyboardType = .numberPad
+            text.tag = 4
+        }
         
             
         //アラートを表示
@@ -188,7 +215,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
        }
     }
 
-    // MARK:- searchBarの処理
+    // MARK: - searchBarの処理
     //  検索バーに入力があったら呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if hallSearchBar.text == "" {
@@ -203,7 +230,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         self.hallSearchBar.endEditing(true)
     }
     
-    //MARK:-Button
+    //MARK: - Button
     
     @IBAction func addButton(_ sender: Any) {
   
@@ -219,6 +246,13 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
             printAlert(title: "エラー", message: "交換率が未入力です")
             return
         }
+        if rateBallTextField.text == ""{
+            printAlert(title: "エラー", message: "交換率が未入力です")
+            return
+        }
+        if saveBallTextField.text == ""{
+            saveBallTextField.text = "0"
+        }
         print("玉：\(Double(rateBallTextField.text!))")
         print("円：\(Double(rateMoneyTextField.text!))")
         
@@ -230,19 +264,24 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
             printAlert(title: "エラー", message: "交換率に数値を入力してください")
             return
         }
+        if Int(saveBallTextField.text!) == nil {
+            printAlert(title: "エラー", message: "貯玉に数値を入力してください")
+            return
+        }
         let addHallName = String(hallNameTextField.text!)
         let addRateMoney = Double(rateMoneyTextField.text!)!
         let addRateBall = Double(rateBallTextField.text!)!
+        let addSaveBall = Int(saveBallTextField.text!)!
         
         let result = realm.objects(HallTable.self).filter("name == %@", addHallName).first
         if result?.name == hallNameTextField.text {
             printAlert(title: "登録失敗", message: "既に登録されているホールです")
         }else{
-            let addHall = HallTable(value: ["id": createNewId(), "name": addHallName, "rateBall": addRateBall, "rateMoney": addRateMoney, "save": 0])
+            let addHall = HallTable(value: ["id": createNewId(), "name": addHallName, "rateBall": addRateBall, "rateMoney": addRateMoney, "save": addSaveBall])
             
             try! realm.write{
                 realm.add(addHall)
-                printAlert(title: "登録成功", message: "\(addHallName)\n\(addRateMoney)円/\(addRateBall)玉")
+                printAlert(title: "登録成功", message: "\(addHallName)\n\(addRateMoney)円/\(addRateBall)玉\n\(addSaveBall)玉")
                 hallNameTextField.text = ""
                 rateBallTextField.text = ""
                 rateMoneyTextField.text = ""
@@ -257,7 +296,7 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         return (realm.objects(HallTable.self).sorted(byKeyPath: "id", ascending: false).first?.id ?? 0) + 1
     }
     
-//MARK:- Alert
+// MARK: - Alert
 //アラート
     func printAlert(title: String, message: String){
         let alertController = UIAlertController(title: title,message: message, preferredStyle: .alert)

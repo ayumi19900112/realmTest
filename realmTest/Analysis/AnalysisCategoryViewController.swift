@@ -57,6 +57,8 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
         datePickerFin.maximumDate = Date()
         
         setData()
+        sortKeyButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        sort()
         
         
        
@@ -175,7 +177,6 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
             // 確定ボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
             //実際の処理
-            print("収支順")
             self.sortKey = 0
             self.sort()
             self.analysisTableView.reloadData()
@@ -185,7 +186,6 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
             // 確定ボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
             //実際の処理
-            print("仕事量順")
             self.sortKey = 1
             self.sort()
             self.analysisTableView.reloadData()
@@ -204,7 +204,6 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
             // 確定ボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
             //実際の処理
-            print("仕事量順")
             self.sortKey = 3
             self.sort()
             self.analysisTableView.reloadData()
@@ -215,7 +214,6 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
             // キャンセルボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
             //実際の処理
-            print("キャンセル")
         })
 
         //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加
@@ -252,14 +250,13 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
             self.sortDesc = false
             self.sort()
             self.analysisTableView.reloadData()
-            self.sortDescButton.setTitle("昇順順", for: .normal)
+            self.sortDescButton.setTitle("昇順", for: .normal)
         })
         // キャンセルボタンの処理
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
             // キャンセルボタンが押された時の処理をクロージャ実装する
             (action: UIAlertAction!) -> Void in
             //実際の処理
-            print("キャンセル")
         })
 
         //UIAlertControllerにキャンセルボタンと確定ボタンをActionを追加

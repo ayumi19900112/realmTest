@@ -14,13 +14,21 @@ class AtermViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    //プライバシーポリシー・お問い合わせ
     @IBAction func aterm(_ sender: Any) {
-        let url = URL(string: "https://drw5c.hp.peraichi.com")!
+        let url = URL(string: "https://pachinkolog.com/contact/contact.php")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
     }
+    
+    @IBAction func howToButton(_ sender: Any) {
+        let url = URL(string: "https://pachinkolog.com/howto/howToUse.php")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     
     /*
     // MARK: - Navigation

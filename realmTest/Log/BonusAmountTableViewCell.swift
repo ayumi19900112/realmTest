@@ -67,10 +67,12 @@ class BonusAmountTableViewCell: UITableViewCell {
     }
     
     @objc func toggleMinus(){
-
+        let realm = try! Realm()
+        let machineList = realm.objects(MachineTable.self).filter("id == %@", machineID).first
+        var amountArray = machineList!.bonusAmount.components(separatedBy: "/").map{Double($0)!}
+        amountArrayStr = machineList!.bonusAmount.components(separatedBy: "/").map{($0)}
         // Get text from text field
         if var text = bonusAmountTextField.text , text.isEmpty == false{
-
             // Toggle
             if text.hasPrefix("-") {
                 text = text.replacingOccurrences(of: "-", with: "")

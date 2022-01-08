@@ -6,6 +6,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
 
 
@@ -14,6 +15,8 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var titleMachineLabel: UILabel!
     @IBOutlet weak var resultTimeLabel: UILabel!
     
+    @IBOutlet weak var currentBallStepper: UIStepper!      //ステッパー
+    @IBOutlet weak var investmentStepper: UIStepper!
     //前のviewからの情報
     var firstStart: Int!        //打ち始めスタート
     var firstPos: Int!          //打ち始め持ち玉
@@ -104,6 +107,9 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         //calcset
         bonusAmountArray = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
         setCalc()
+        
+        currentBallTextField.text = String(firstPos)
+        currentStartTextField.text = String(firstStart)
         
         //bonusCountを0にする
         for _ in 0 ..< bonusName!.count {
@@ -300,7 +306,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         let dt = Date()
         let dateFormatter = DateFormatter()
 
-        // DateFormatter を使用して書式とロケールを指定する33
+        // DateFormatter を使用して書式とロケールを指定する
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "Hm", options: 0, locale: Locale(identifier: "ja_JP"))
         self.resultTimeLabel.text = "計算結果 \(dateFormatter.string(from: dt))"
         
@@ -329,12 +335,15 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
                 ytResultLabel.textColor = .black
             }
             ytCountLabel.text = "YTまで"
-            ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
+            ytCountResultLabel.text = "\(yutime.toYT)回転"
+            //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
         }else{
+            /*
             ytLabel.text = ""
             ytResultLabel.text = ""
             ytCountLabel.text = ""
             ytCountResultLabel.text = ""
+             */
         }
        
         
@@ -509,7 +518,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
 
                 let alert = UIAlertController(
                     title: "到達までのスタート数を変更",
-                    message: "遊タイム到達スタート数\(machineList[0].playTime)回転",
+                    message: "低確率\(machineList[0].playTime)回転で遊タイム突入",
                     preferredStyle: UIAlertController.Style.alert)
                 alert.addTextField(
                     configurationHandler: {(textField: UITextField!) in
@@ -547,6 +556,41 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
                 )
 
                 self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - stepper
+    
+    @IBAction func stepper(_ sender: Any) {
+        var ball = 0
+        if currentBallTextField.text == ""{
+            ball = 0
+        }else{
+            ball = Int(currentBallTextField.text!)!
+        }
+        let printBall = Int(currentBallStepper.value) + ball
+        if printBall < 0{
+            currentBallTextField.text = "0"
+        }else{
+            currentBallTextField.text = String(printBall)
+        }
+        currentBallStepper.value = 0.0
+    }
+    
+    @IBAction func moneyStepper(_ sender: Any) {
+        var money = 0
+        if investmetTextField.text == ""{
+            money = 0
+        }else{
+            money = Int(investmetTextField.text!)!
+        }
+        let printMoney = Int(investmentStepper.value) + money
+        if printMoney < 0{
+            investmetTextField.text = "0"
+        }else{
+            investmetTextField.text = String(printMoney)
+        }
+        investmentStepper.value = 0.0
+        
     }
     
 }

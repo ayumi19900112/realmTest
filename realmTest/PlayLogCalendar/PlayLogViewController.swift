@@ -280,6 +280,16 @@ class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         let defaultAction: UIAlertAction = UIAlertAction(title: "削除", style: UIAlertAction.Style.default, handler:{ [self]
             // 削除処理
             (action: UIAlertAction!) -> Void in
+            let delete = DeleteData()
+            delete.date = event[indexPath.row].date
+            delete.machineID = event[indexPath.row].machineID
+            let hallName = realm.objects(HallTable.self).filter("id == %@", event[indexPath.row].hallID).first?.name
+            delete.hallName = hallName!
+            delete.number = event[indexPath.row].number
+            delete.start = event[indexPath.row].start
+            delete.inPOS = event[indexPath.row].inPOS
+            delete.defference = event[indexPath.row].defference
+            delete.deleteData()
             try! realm.write{
                 realm.delete(event[indexPath.row])
             }

@@ -47,26 +47,22 @@ class YuTime{
             do  {
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
                 
-                //let articles = json.map { (article) -> [String: Any] in
                 self.ytList = json.map { (article) -> [String: Any] in
                     return article as! [String: Any]
                 }
-                //print(articles)
-                //DispatchQueue.main.async() { () -> Void in
-                //    self.ytList = articles
-                
-                //}
             }catch {
                 print(error)
             }
-            print("response recieve")
             semaphore.signal()
         }
 
 
     
     func calcYuValue() -> Bool{
-        var flag = false
+        var flag = true
+        if toYT < 0{
+            toYT = 0
+        }
         if ytList.count > 0 && yuCount > currentStart{
             for i in 0 ..< ytList.count{
                 if Int(ytList[i]["id"] as! String)! == self.machineID{

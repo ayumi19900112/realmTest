@@ -21,6 +21,8 @@ class CategoryDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var defferenceLabel: UILabel!
     @IBOutlet weak var rateBallLabel: UILabel!
     
+    @IBOutlet weak var numberLabel: UILabel!
+    
     @IBOutlet weak var leftRateStartLabel: UILabel!
     
     
@@ -43,16 +45,17 @@ class CategoryDetailTableViewCell: UITableViewCell {
         self.dateLabel.text = replaceDate(date: data.date)
         self.hallNameLabel.text = data.hall
         self.machineNameLabel.text = data.machineName
+        self.numberLabel.text = "\(data.number)番台"
         self.bopLabel.text = "\(calc.intFormat(num: data.bop))円"
         self.investmentLabel.text = "\(calc.intFormat(num: data.investment))円"
         self.startLabel.text = "\(calc.intFormat(num: data.start))回転"
-        let rateStart = round(Double(data.start) / Double(data.inPOS / 250) * 100) / 100
+        let rateStart = round(Double(data.start) / Double(data.inPOS) * 250.0 * 100) / 100
         self.rateStartLabel.text = "\(rateStart)回転"
         self.workLabel.text = "\(calc.intFormat(num: data.work))円"
         self.luckLabel.text = "\(calc.intFormat(num: data.bop - data.work))円"
         self.defferenceLabel.text = "\(calc.intFormat(num: data.defference))玉"
         let rate = Double((data.inPOS - data.investment * data.rental / 1000) / data.inPOS)
-        self.rateBallLabel.text = "\(round(rate * 10000) / 100)%"
+        self.rateBallLabel.text = "\(round(rate * 10000.0) / 100)%"
         if data.bop > 0{
             self.bopLabel.textColor = .blue
         }else if data.bop < 0{

@@ -31,6 +31,9 @@
 		E2220798274F5B8C00CF685F /* AnalysisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220796274F5B8600CF685F /* AnalysisTableViewCell.swift */; };
 		E2220799274F5B8C00CF685F /* AnalysisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2220797274F5B8B00CF685F /* AnalysisTableViewCell.xib */; };
 		E23D842A274BD6DD00067071 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23D8429274BD6DD00067071 /* AnalysisViewController.swift */; };
+		E23E9F4027878B9D00B939E4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E23E9F3F27878B9D00B939E4 /* Alamofire */; };
+		E23E9F4227878C0500B939E4 /* InsertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23E9F4127878C0500B939E4 /* InsertData.swift */; };
+		E23E9F4427886A8F00B939E4 /* DeleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23E9F4327886A8F00B939E4 /* DeleteData.swift */; };
 		E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1126EBA304000C038D /* AppDelegate.swift */; };
 		E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1326EBA304000C038D /* SceneDelegate.swift */; };
 		E2664E1626EBA304000C038D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1526EBA304000C038D /* ViewController.swift */; };
@@ -108,6 +111,8 @@
 		E2220796274F5B8600CF685F /* AnalysisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisTableViewCell.swift; sourceTree = "<group>"; };
 		E2220797274F5B8B00CF685F /* AnalysisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalysisTableViewCell.xib; sourceTree = "<group>"; };
 		E23D8429274BD6DD00067071 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		E23E9F4127878C0500B939E4 /* InsertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertData.swift; sourceTree = "<group>"; };
+		E23E9F4327886A8F00B939E4 /* DeleteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteData.swift; sourceTree = "<group>"; };
 		E2664E0E26EBA304000C038D /* PachinkoLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PachinkoLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2664E1126EBA304000C038D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2664E1326EBA304000C038D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E23E9F4027878B9D00B939E4 /* Alamofire in Frameworks */,
 				E210DCC9274EF41700690A6D /* RealmSwift in Frameworks */,
 				E210DCCC274EF7D300690A6D /* FSCalendar in Frameworks */,
 				E210DCC7274EF41700690A6D /* Realm in Frameworks */,
@@ -194,14 +200,12 @@
 			isa = PBXGroup;
 			children = (
 				E2C09BEF2760F5DC006FD575 /* Machine.swift */,
-				E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */,
 				E2C09BF12760F5EE006FD575 /* Analysis */,
 				E2C09BF42760F7A2006FD575 /* HallEdit */,
 				E2664E1126EBA304000C038D /* AppDelegate.swift */,
 				E2664E1326EBA304000C038D /* SceneDelegate.swift */,
 				E2664E1526EBA304000C038D /* ViewController.swift */,
 				E2664E1726EBA304000C038D /* Main.storyboard */,
-				E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */,
 				E2C09BF22760F6CD006FD575 /* PlayLogCalendar */,
 				E2E927B02715B8C600618779 /* TabBarController.swift */,
 				E2C09BF527615584006FD575 /* Log */,
@@ -240,8 +244,11 @@
 		E2C09BF22760F6CD006FD575 /* PlayLogCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E2E927B8271FC17C00618779 /* DetailViewController.swift */,
+				E20D028B2727FDD700C0D001 /* DetailLogViewController.swift */,
 				E2664E5D26F438F6000C038D /* PlayLogViewController.swift */,
+				E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */,
+				E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */,
+				E23E9F4327886A8F00B939E4 /* DeleteData.swift */,
 			);
 			path = PlayLogCalendar;
 			sourceTree = "<group>";
@@ -261,6 +268,7 @@
 		E2C09BF42760F7A2006FD575 /* HallEdit */ = {
 			isa = PBXGroup;
 			children = (
+				E20D028727277F2300C0D001 /* HallEditTableViewCell.swift */,
 				E20D028927277F3100C0D001 /* HallEditTableViewCell.xib */,
 				E20D0281272700F300C0D001 /* EditHallViewController.swift */,
 			);
@@ -271,10 +279,10 @@
 			isa = PBXGroup;
 			children = (
 				E2E927BA272037B700618779 /* DetailTableViewCell.swift */,
+				E2E927B8271FC17C00618779 /* DetailViewController.swift */,
+				E23E9F4127878C0500B939E4 /* InsertData.swift */,
 				E2E927BB272037B700618779 /* DetailTableViewCell.xib */,
 				E2E9279A2712B91C00618779 /* Calc.swift */,
-				E26B2FA226FE08E90051607A /* PlayLogCellTableViewCell.xib */,
-				E26B2FA126FE08E90051607A /* PlayLogCellTableViewCell.swift */,
 				E2664E5926F36B30000C038D /* CurrentLogViewController.swift */,
 				E2C09BF927652D5D006FD575 /* YuTime.swift */,
 				E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */,
@@ -318,6 +326,7 @@
 				E210DCC6274EF41700690A6D /* Realm */,
 				E210DCC8274EF41700690A6D /* RealmSwift */,
 				E210DCCB274EF7D300690A6D /* FSCalendar */,
+				E23E9F3F27878B9D00B939E4 /* Alamofire */,
 			);
 			productName = realmTest;
 			productReference = E2664E0E26EBA304000C038D /* PachinkoLog.app */;
@@ -350,6 +359,7 @@
 				E27447E6274ED62000B60F9C /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				E210DCC5274EF41700690A6D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				E210DCCA274EF7D300690A6D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				E23E9F3E27878B9C00B939E4 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E2664E0F26EBA304000C038D /* Products */;
 			projectDirPath = "";
@@ -440,6 +450,7 @@
 				E2E927962711D12100618779 /* LogTableViewCell.swift in Sources */,
 				E2C09BFA27652D5D006FD575 /* YuTime.swift in Sources */,
 				E2C09BF82762F1D6006FD575 /* Log.swift in Sources */,
+				E23E9F4227878C0500B939E4 /* InsertData.swift in Sources */,
 				E2E927B12715B8C600618779 /* TabBarController.swift in Sources */,
 				E2664E3326F0D99F000C038D /* ConditionsInput.swift in Sources */,
 				E2E9279B2712B91C00618779 /* Calc.swift in Sources */,
@@ -456,6 +467,7 @@
 				E203CB5D2758288200CEEFEA /* CategoryDetailViewController.swift in Sources */,
 				E20D028827277F2300C0D001 /* HallEditTableViewCell.swift in Sources */,
 				E20D029027294EC600C0D001 /* HowToUseViewController.swift in Sources */,
+				E23E9F4427886A8F00B939E4 /* DeleteData.swift in Sources */,
 				E2664E5A26F36B30000C038D /* CurrentLogViewController.swift in Sources */,
 				E26B2FA326FE08E90051607A /* PlayLogCellTableViewCell.swift in Sources */,
 				E203CB4F2753AF5200CEEFEA /* DataResult.swift in Sources */,
@@ -615,7 +627,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LH6K36686L;
 				INFOPLIST_FILE = realmTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -623,7 +635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11;
+				MARKETING_VERSION = 16;
 				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -638,7 +650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LH6K36686L;
 				INFOPLIST_FILE = realmTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -646,7 +658,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11;
+				MARKETING_VERSION = 16;
 				PRODUCT_BUNDLE_IDENTIFIER = hashibiro.realmTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -694,6 +706,14 @@
 				kind = branch;
 			};
 		};
+		E23E9F3E27878B9C00B939E4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E27447E6274ED62000B60F9C /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -719,6 +739,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E210DCCA274EF7D300690A6D /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		E23E9F3F27878B9D00B939E4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E23E9F3E27878B9C00B939E4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

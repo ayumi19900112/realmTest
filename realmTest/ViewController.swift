@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var machineNameTableView: UITableView!
     @IBOutlet weak var machineSearchBar: UISearchBar!
+    @IBOutlet weak var dataCountLabel: UILabel!
     
     var realm = try! Realm()
     var machineNameList: Results<MachineTable>!
@@ -47,29 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineSearchBar.inputAccessoryView = doneToolbar
         
         getMachineData()
-        
-        
-        /*
-        //CSV読み込み
-        let machine = MachineTable()
-        let results = realm.objects(MachineTable.self)
-        try! realm.write {
-            realm.delete(results)
-        }
-        let csvArray = machine.csvLoad(filename: "machineName")
-        for csvStr in csvArray {
-            let value = machine.saveCsvValue(csvStr: csvStr)
-            let realm = try! Realm()
-            
-            do {
-                try! realm.write {
-                    realm.add(value)
-                }
-            } catch {
-                print("えらー")
-            }
-        }
-         */
     }
     override func viewWillAppear(_ animated: Bool) {
         getMachineData()
@@ -80,6 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - TableViewの処理
     //tableViewに表示する行数を返す
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.dataCountLabel.text = "\(self.machineList.count)件表示"
         return self.machineList.count
     }
     

@@ -6,6 +6,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
 class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
 
@@ -24,13 +25,10 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
     
     var hallID = 0
     var machineID: Int!
-    
     var hallList: Results<HallTable>!
     var machineNameList: Results<MachineTable>!
-    
     var hallSelect = false
-    
-    
+    var textDidChange = true
     var realm = try! Realm()
     
     
@@ -44,7 +42,7 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         self.machineNameList = realm.objects(MachineTable.self).filter("id == \(machineID!)")
         nameLabel.text! = machineNameList[0].name
         hallList = realm.objects(HallTable.self)
-        setAmount()
+        
         
         //完了ボタン
         //キーボードに完了のツールバーを作成
@@ -64,16 +62,104 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
     }
     
     func setAmount(){
-        let lastResult = realm.objects(ResultTable.self).filter("machineID == %@", machineID)
-        if lastResult.count != 0{
+        var amountArray: [[Double]] = [[]]
+        var amountArrayStr: [String] = []
+        // 同じホールで同じ機種で同じ台番号を打ったことがある
+        var playResult = realm.objects(ResultTable.self).filter("machineID == %@ AND hallID == %@ AND number == %@", machineID, hallID, Int(numberTextField.text!)!).sorted(byKeyPath: "date", ascending: false)
+        print("machine.hall.number", playResult)
+        if playResult.count > 0{
+            playResult.forEach{
+                amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})
+            }
+            amountArray.removeFirst()
+            print("amountArray", amountArray)
+            var average = [Double](repeating: 0.0, count: amountArray[0].count)
+            for i in 0 ..< amountArray.count{
+                for j in 0 ..< amountArray[0].count{
+                    average[j] += Double(amountArray[i][j])
+                }
+            }
+            for i in 0 ..< average.count{
+                if i == 0{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 100) / 100))
+                }else{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 10) / 10))
+                }
+            }
+            
+            amountArray.forEach{
+                print("amountArrayStr", $0)
+            }
             do{
                 try realm.write{
-                    let amount = lastResult.last?.bonusAmount
-                    machineNameList[0].bonusAmount = amount!
+                    let amount = amountArrayStr.joined(separator: "/")
+                    machineNameList[0].bonusAmount = amount
                 }
             }catch{
-                
             }
+            return
+        }
+        // 同じホールで同じ機種を打ったことがある
+        playResult = realm.objects(ResultTable.self).filter("machineID == %@ AND hallID == %@", machineID, hallID).sorted(byKeyPath: "date")
+        print("machine.hall", playResult)
+        if playResult.count > 0{
+            playResult.forEach{
+                amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})
+            }
+            amountArray.removeFirst()
+            var average = [Double](repeating: 0.0, count: amountArray[0].count)
+            for i in 0 ..< amountArray.count{
+                for j in 0 ..< amountArray[0].count{
+                    average[j] += Double(amountArray[i][j])
+                }
+            }
+            for i in 0 ..< average.count{
+                if i == 0{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 100) / 100))
+                }else{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 10) / 10))
+                }
+            }
+            
+            do{
+                try realm.write{
+                    let amount = amountArrayStr.joined(separator: "/")
+                    print("writeAmount", amount)
+                    machineNameList[0].bonusAmount = amount
+                }
+            }catch{
+            }
+            return
+        }
+        // 同じ機種を打ったことがある
+        playResult = realm.objects(ResultTable.self).filter("machineID == %@", machineID, hallID).sorted(byKeyPath: "date")
+        print("machine", playResult)
+        if playResult.count > 0{
+            playResult.forEach{
+                amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})
+            }
+            amountArray.removeFirst()
+            var average = [Double](repeating: 0.0, count: amountArray[0].count)
+            for i in 0 ..< amountArray.count{
+                for j in 0 ..< amountArray[0].count{
+                    average[j] += Double(amountArray[i][j])
+                }
+            }
+            for i in 0 ..< average.count{
+                if i == 0{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 100) / 100))
+                }else{
+                    amountArrayStr.append(String(round(average[i] / Double(amountArray.count) * 10) / 10))
+                }
+            }
+            do{
+                try realm.write{
+                    let amount = amountArrayStr.joined(separator: "/")
+                    machineNameList[0].bonusAmount = amount
+                }
+            }catch{
+            }
+            return
         }
     }
     // MARK: - addHallButton
@@ -186,14 +272,39 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
     //タップされたとき
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         hallSelect = true
-        hallNameLabel.text = hallList[indexPath.row].name
-        rateMoneyTextField.text = String(hallList[indexPath.row].rateMoney)
-        rateBallTextField.text = String(hallList[indexPath.row].rateBall)
+        let calc = LogCalc()
+        
+        // アクションシートを表示する
+        let alert: UIAlertController = UIAlertController(title: "値セットしますか？", message: "開始時持ち玉:\(calc.intFormat(num: hallList[indexPath.row].save) )玉\n交換率:\(hallList[indexPath.row].rateMoney)円/\(hallList[indexPath.row].rateBall)玉\n上記値をセットしますか？", preferredStyle:  UIAlertController.Style.alert)
+
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "セットする", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            self.rateMoneyTextField.text = String(self.hallList[indexPath.row].rateMoney)
+            self.rateBallTextField.text = String(self.hallList[indexPath.row].rateBall)
+            self.firstPosTextField.text = String(self.hallList[indexPath.row].save)
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "セットしない", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //何もしない
+        })
+
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+
+        // ④ Alertを表示
+        present(alert, animated: true, completion: nil)
+        
         self.hallID = hallList[indexPath.row].id
+        hallNameLabel.text = hallList[indexPath.row].name
         hallNameLabel.textColor = .black
     }
 
-    // MARK:- searchBarの処理
+    // MARK: - searchBarの処理
     //  検索バーに入力があったら呼ばれる
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if hallSearchBar.text == "" {
@@ -250,6 +361,8 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
             nextView.machineID = Int(self.machineID!)                   //機種ID
             nextView.rental = Int(self.rentalTextField.text!)           //貸し玉
             nextView.number = Int(self.numberTextField.text!)           //台番号
+            
+            setAmount()
         }
     }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -259,7 +372,7 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
             return hallSelect
         }
     
-    //MARK:- 完了ボタン
+    //MARK: - 完了ボタン
     //完了ボタンタップ時に、キーボードを閉じる
     @objc
     func doneButtonTaped(sender: UIButton) {
@@ -271,7 +384,7 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         hallSearchBar.endEditing(true)
         numberTextField.endEditing(true)
     }
-    //MARK:- Alert
+    //MARK: - Alert
     //アラート
     private func alert(message: String) {
          let alertController = UIAlertController(title: "エラー",message: message, preferredStyle: .alert)
@@ -328,4 +441,6 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }
+    
+
 }

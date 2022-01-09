@@ -54,7 +54,7 @@ class CategoryDetailTableViewCell: UITableViewCell {
         self.workLabel.text = "\(calc.intFormat(num: data.work))円"
         self.luckLabel.text = "\(calc.intFormat(num: data.bop - data.work))円"
         self.defferenceLabel.text = "\(calc.intFormat(num: data.defference))玉"
-        let rate = Double((data.inPOS - data.investment * data.rental / 1000) / data.inPOS)
+        let rate = 1.0 - Double((data.investment * data.rental / 1000) / data.inPOS)
         self.rateBallLabel.text = "\(round(rate * 10000.0) / 100)%"
         if data.bop > 0{
             self.bopLabel.textColor = .blue

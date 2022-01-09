@@ -26,6 +26,8 @@ class AnalysisTableViewCell: UITableViewCell {
     @IBOutlet weak var rangeBallLabel: UILabel!     //差玉
     @IBOutlet weak var maximumMoneyLabel: UILabel!  //最高勝ち金額
     @IBOutlet weak var minimumMoneyLabel: UILabel!  //最高負け金額
+    var investment = 0  //投資金額
+    var rental = 0
     
     
     override func awakeFromNib() {
@@ -50,6 +52,7 @@ class AnalysisTableViewCell: UITableViewCell {
         var bop = 0
         var work = 0
         var dif = 0
+        investment = 0
         
         
         
@@ -71,7 +74,7 @@ class AnalysisTableViewCell: UITableViewCell {
             bop += result[idx[i]].playResult
             work += result[idx[i]].workResult
             inPOS += result[idx[i]].inPOS
-            rental += result[idx[i]].rental * result[idx[i]].investment
+            rental += Int(Double(result[idx[i]].rental) * (Double(result[idx[i]].investment) / 1000.0))
             dif += result[idx[i]].defference
             
             
@@ -128,8 +131,7 @@ class AnalysisTableViewCell: UITableViewCell {
         }else{
             avgStartLabel.text = "\(start / dateCount)回転"
         }
-        
-        let rate = round(Double(inPOS) / Double(inPOS + rental) * 100) / 100
+        let rate = round(Double(rental) / Double(inPOS) * 100) / 100
         rateHavePlayLabel.text = "\(rate)%"
         avgBOPLabel.text = "\(calc.intFormat(num: bop / dateCount))円"
         avgWorkLabel.text = "\(calc.intFormat(num: work / dateCount))円"

@@ -57,6 +57,7 @@ class AnalysisCategoryTableViewCell: UITableViewCell {
         var max = 0
         var min = 0
         var i = 1
+        var rental = 0
         while i < result.count{
             if result[i-1].date != result[i].date{
                 dateCount += 1
@@ -76,8 +77,11 @@ class AnalysisCategoryTableViewCell: UITableViewCell {
             if result[i].playResult < min{
                 min = result[i].playResult
             }
+            
         }
         let evenCount = result.count - winCount - loseCount
+        
+        
         
         
         
@@ -90,8 +94,9 @@ class AnalysisCategoryTableViewCell: UITableViewCell {
         self.winRateLabel.text = "\(round(Double(winCount) / Double(result.count) * 10000) / 100)%"
         self.totalStartLabel.text = "\(calc.intFormat(num: data.start))回転"
         self.avgStartLabel.text = "\(calc.intFormat(num: data.start / dateCount))回転"
-        
-        let rate = round(Double(data.inPOS) / Double(data.inPOS + data.rental) * 10000) / 100
+        let rate =  round((1.0 - (Double(data.investment) / 1000.0 * Double(data.rental)) / Double(data.inPOS)) * 10000) / 100
+        print("rate", rate)
+        //let rate = round(Double(data.inPOS) / Double(data.inPOS + data.rental) * 10000) / 100
         self.rateHavePlayLabel.text = "\(rate)%"
         self.avgBOPLabel.text = "\(calc.intFormat(num: data.bop / dateCount))円"
         self.avgWorkLabel.text = "\(calc.intFormat(num: data.work / dateCount))円"

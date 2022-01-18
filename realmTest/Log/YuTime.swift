@@ -23,6 +23,7 @@ class YuTime{
     var turnOver = 0.0
     var rental = 0
     var toYT = 0
+    var densapo = 0
 
     var ytList:[[String: Any]] = []
     
@@ -59,11 +60,11 @@ class YuTime{
 
     
     func calcYuValue() -> Bool{
-        var flag = true
+        var flag = false
         if toYT < 0{
             toYT = 0
         }
-        if ytList.count > 0 && yuCount > currentStart{
+        if ytList.count > 0 && (yuCount + densapo) > currentStart{
             for i in 0 ..< ytList.count{
                 if Int(ytList[i]["id"] as! String)! == self.machineID{
                     bonusNum = (ytList[i]["bonus"] as! String).components(separatedBy: "/").map{Double($0)!}

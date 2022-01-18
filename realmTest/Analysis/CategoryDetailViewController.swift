@@ -51,7 +51,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
         self.sortKeyButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        sort()
+        //sort()
 
         // Do any additional setup after loading the view.
     }

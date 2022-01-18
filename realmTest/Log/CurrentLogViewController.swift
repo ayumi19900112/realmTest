@@ -317,6 +317,9 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         yutime.haveBall = Int(currentBallTextField!.text!)!
         yutime.bonusAmount = self.bonusAmountArray
         yutime.bonusProbability = machineList[0].probability
+        if logFlag[logFlag.count - 2] == "電サポ抜け"{
+            yutime.densapo = logStart[logStart.count - 2]
+        }
         yutime.currentStart = logStart.last!
         yutime.turnOver = calc.getTurnOver()
         yutime.yuCount = machineList[0].playTime
@@ -338,12 +341,12 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             ytCountResultLabel.text = "\(yutime.toYT)回転"
             //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
         }else{
-            /*
+            
             ytLabel.text = ""
             ytResultLabel.text = ""
             ytCountLabel.text = ""
             ytCountResultLabel.text = ""
-             */
+             
         }
        
         

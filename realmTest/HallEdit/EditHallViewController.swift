@@ -16,6 +16,9 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var hallSearchBar: UISearchBar!
     @IBOutlet weak var saveBallTextField: UITextField!
     
+    @IBOutlet weak var totalSaveLabel: UILabel!         //総貯玉数
+    @IBOutlet weak var totalExchangeLabel: UILabel!     //総換金額
+    
     
     let realm = try! Realm()
     var hallList: Results<HallTable>!
@@ -43,9 +46,15 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         saveBallTextField.inputAccessoryView = doneToolbar
         hallSearchBar.inputAccessoryView = doneToolbar
         
-        let numberStr = ""
-        print("変換 -> \(Double(numberStr))")
-        //let numberDbl = Double(numberStr)
+        var totalSave = 0
+        var totalExchange = 0
+        hallList.forEach(){
+            totalSave += $0.save
+            totalExchange += Int(Int(Double($0.save) / $0.rateBall) * Int($0.rateMoney))
+        }
+        let calc = LogCalc()
+        totalSaveLabel.text = "\(calc.intFormat(num: totalSave))玉"
+        totalExchangeLabel.text = "\(calc.intFormat(num: totalExchange))円"
     }
     
     // 完全に全ての読み込みが完了時に実行

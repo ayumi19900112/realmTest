@@ -95,7 +95,6 @@ class AnalysisCategoryTableViewCell: UITableViewCell {
         self.totalStartLabel.text = "\(calc.intFormat(num: data.start))回転"
         self.avgStartLabel.text = "\(calc.intFormat(num: data.start / dateCount))回転"
         let rate =  round((1.0 - (Double(data.investment) / 1000.0 * Double(data.rental)) / Double(data.inPOS)) * 10000) / 100
-        print("rate", rate)
         //let rate = round(Double(data.inPOS) / Double(data.inPOS + data.rental) * 10000) / 100
         self.rateHavePlayLabel.text = "\(rate)%"
         self.avgBOPLabel.text = "\(calc.intFormat(num: data.bop / dateCount))円"

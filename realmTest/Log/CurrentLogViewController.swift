@@ -32,6 +32,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     var bonusCount: [Int] = []      //大当たり回数記録用
     var bonusAmountArray: [Double] = []
     var yutime = YuTime()
+    var pivotAmountIndex = 1     //大当たり基準をどれにするか
     
     //Itemの紐付け
     //input
@@ -192,6 +193,18 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             actionSheet(indexPath: indexPath)
        }
     }
+    
+    // セルがタップされたとき
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == bonusTableView{
+            // タップされたセルの行番号を出力
+            print("\(indexPath.row)番目の行が選択されました。")
+            if indexPath.row > 0 && bonusName[indexPath.row] != "小当R"{
+                pivotAmountIndex = indexPath.row
+                setAmountButton.setTitle("\(bonusName[indexPath.row])基準で設定", for: .normal)
+            }
+        }
+    }
 
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -207,9 +220,14 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func setBonusAmountButton(_ sender: Any) {
         machineList = realm.objects(MachineTable.self).filter("id == %@", machineID!)
         let pa = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
+        pa.forEach(){
+            print($0)
+        }
         for i in 1 ..< bonusAmountArray.count{
             if bonusName[i] != "小当R"{
-                bonusAmountArray[i] = round(pa[1] * bonusRate[i] * 10) / 10
+                bonusAmountArray[i] = round(pa[pivotAmountIndex] * (bonusRate[i] / bonusRate[pivotAmountIndex]) * 10) / 10
+            }else{
+                bonusAmountArray[i] = pa[i]
             }
         }
         var strArr = [String](repeating: "0.0", count: self.bonusAmountArray.count)

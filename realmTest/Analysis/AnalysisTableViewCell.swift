@@ -55,7 +55,7 @@ class AnalysisTableViewCell: UITableViewCell {
         investment = 0
         
         
-        
+        var dayWin = 0
         var inPOS = 0
         var rental = 0
         for i in 0 ..< idx.count{
@@ -76,9 +76,6 @@ class AnalysisTableViewCell: UITableViewCell {
             inPOS += result[idx[i]].inPOS
             rental += Int(Double(result[idx[i]].rental) * (Double(result[idx[i]].investment) / 1000.0))
             dif += result[idx[i]].defference
-            
-            
-            
         }
         
         
@@ -124,15 +121,15 @@ class AnalysisTableViewCell: UITableViewCell {
         machineCountLabel.text = "\(calc.intFormat(num: idx.count))台"
         dateCountLabel.text = "\(dateCount)日"
         winCountLabel.text = "\(winCount)勝:\(loseCount)負:\(idx.count - winCount - loseCount)分"
-        winRateLabel.text = "\(round(Double(winCount) / Double(dateCount) * 10000) / 100)%"
+        winRateLabel.text = "\(round(Double(winCount) / Double(idx.count) * 10000) / 100)%"
         totalStartLabel.text = "\(calc.intFormat(num: start))回転"
         if dateCount == 0{
             avgStartLabel.text = "0回転"
         }else{
             avgStartLabel.text = "\(start / dateCount)回転"
         }
-        let rate = round(Double(rental) / Double(inPOS) * 100) / 100
-        rateHavePlayLabel.text = "\(rate)%"
+        let rate = round(Double(rental) / Double(inPOS) * 10000.0) / 100.0
+        rateHavePlayLabel.text = "\(round((100.0 - rate) * 100) / 100)%"
         avgBOPLabel.text = "\(calc.intFormat(num: bop / dateCount))円"
         avgWorkLabel.text = "\(calc.intFormat(num: work / dateCount))円"
         luckLabel.text = "\(calc.intFormat(num: bop - work))円"

@@ -158,9 +158,6 @@ class AnalysisDetailViewController: UIViewController, UITableViewDelegate, UITab
             chartWork.append(totalWork)
             AnalysisDetailViewController.chartDate.append(result[hitIndex[i]].date)
         }
-        
-        print("bop", chartBOP)
-        print("work", chartWork)
         var i = 1
         while i < chartBOP.count{
             if AnalysisDetailViewController.chartDate[i] == AnalysisDetailViewController.chartDate[i-1]{

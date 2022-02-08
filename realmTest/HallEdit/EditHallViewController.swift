@@ -46,6 +46,17 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         saveBallTextField.inputAccessoryView = doneToolbar
         hallSearchBar.inputAccessoryView = doneToolbar
         
+        totalSave()
+    }
+    
+    // 完全に全ての読み込みが完了時に実行
+    override func viewDidAppear(_ animated: Bool) {
+        self.hallListTableView.reloadData()
+        totalSave()
+    }
+    
+    // MARK: - トータル貯玉を計算
+    func totalSave(){
         var totalSave = 0
         var totalExchange = 0
         hallList.forEach(){
@@ -55,11 +66,6 @@ class EditHallViewController: UIViewController, UITableViewDelegate, UITableView
         let calc = LogCalc()
         totalSaveLabel.text = "\(calc.intFormat(num: totalSave))玉"
         totalExchangeLabel.text = "\(calc.intFormat(num: totalExchange))円"
-    }
-    
-    // 完全に全ての読み込みが完了時に実行
-    override func viewDidAppear(_ animated: Bool) {
-        self.hallListTableView.reloadData()
     }
     //MARK: - 完了ボタン
     //完了ボタンタップ時に、キーボードを閉じる

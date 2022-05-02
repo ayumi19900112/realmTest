@@ -74,8 +74,8 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     var machineList: Results<MachineTable>!
     var hallList: Results<HallTable>!
     
-    
-    
+    //UserDefaults用クラス
+    let ud = UD()
     
     
     override func viewDidLoad() {
@@ -85,7 +85,11 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         
         bonusTableView.register(UINib(nibName: "BonusAmountTableViewCell", bundle: nil),forCellReuseIdentifier:"BonusAmountCell")
         logTableView.register(UINib(nibName: "LogTableViewCell", bundle: nil),forCellReuseIdentifier:"LogCell")
-        logStart.append(firstStart)
+        
+
+        if logStart.count == 0{
+            logStart.append(firstStart)
+        }
         
         //delegate,datasource
         logTableView.delegate = self
@@ -104,7 +108,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         //大当たり出玉
         setMachineInfo()
         //pickerに表示する文字列
-        setPickerList()
+         setPickerList()
         //calcset
         bonusAmountArray = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
         setCalc()
@@ -197,8 +201,6 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     // セルがタップされたとき
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == bonusTableView{
-            // タップされたセルの行番号を出力
-            print("\(indexPath.row)番目の行が選択されました。")
             if indexPath.row > 0 && bonusName[indexPath.row] != "小当R"{
                 pivotAmountIndex = indexPath.row
                 setAmountButton.setTitle("\(bonusName[indexPath.row])基準で設定", for: .normal)
@@ -220,9 +222,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func setBonusAmountButton(_ sender: Any) {
         machineList = realm.objects(MachineTable.self).filter("id == %@", machineID!)
         let pa = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
-        pa.forEach(){
-            print($0)
-        }
+
         for i in 1 ..< bonusAmountArray.count{
             if bonusName[i] != "小当R"{
                 bonusAmountArray[i] = round(pa[pivotAmountIndex] * (bonusRate[i] / bonusRate[pivotAmountIndex]) * 10) / 10
@@ -366,8 +366,10 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             ytCountResultLabel.text = ""
              
         }
-       
         
+        
+        saveUserDefaults()      //userDefaultsに保存
+
     }
     
     
@@ -613,5 +615,41 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         investmentStepper.value = 0.0
         
     }
+    
+    // MARK: - UserDefaults
+    //userDefaultsに保存
+    func saveUserDefaults(){
+        //userDefaultsに保存
+        /*
+        ud.firstPos = self.firstPos
+        ud.firstStart = self.firstStart
+        ud.logStart = self.logStart
+        ud.logBonus = self.logFlag
+        ud.investment = Int(investmetTextField.text!)!
+        ud.currentPos = Int(currentBallTextField.text!)!
+        ud.number = self.number
+        ud.machineID = self.machineID
+        ud.hallID = self.hallID
+        ud.setData()
+         */
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
+        else{
+            return
+        }
+        UserDefaults.standard.set(data, forKey: "data")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    func showUserDefaults(){
+        print("投資金額：", ud.getInvestment())
+        print("投資金額：", ud.getInvestment())
+        print("投資金額：", ud.getInvestment())
+        print("投資金額：", ud.getInvestment())
+    }
+    
+    // MARK: -仕事量タップしたとき
+    
+    
     
 }

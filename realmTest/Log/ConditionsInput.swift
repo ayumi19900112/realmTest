@@ -66,13 +66,11 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         var amountArrayStr: [String] = []
         // 同じホールで同じ機種で同じ台番号を打ったことがある
         var playResult = realm.objects(ResultTable.self).filter("machineID == %@ AND hallID == %@ AND number == %@", machineID, hallID, Int(numberTextField.text!)!).sorted(byKeyPath: "date", ascending: false)
-        print("machine.hall.number", playResult)
         if playResult.count > 0{
             playResult.forEach{
                 amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})
             }
             amountArray.removeFirst()
-            print("amountArray", amountArray)
             var average = [Double](repeating: 0.0, count: amountArray[0].count)
             for i in 0 ..< amountArray.count{
                 for j in 0 ..< amountArray[0].count{
@@ -87,9 +85,6 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
                 }
             }
             
-            amountArray.forEach{
-                print("amountArrayStr", $0)
-            }
             do{
                 try realm.write{
                     let amount = amountArrayStr.joined(separator: "/")
@@ -101,7 +96,6 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         }
         // 同じホールで同じ機種を打ったことがある
         playResult = realm.objects(ResultTable.self).filter("machineID == %@ AND hallID == %@", machineID, hallID).sorted(byKeyPath: "date")
-        print("machine.hall", playResult)
         if playResult.count > 0{
             playResult.forEach{
                 amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})
@@ -124,7 +118,6 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
             do{
                 try realm.write{
                     let amount = amountArrayStr.joined(separator: "/")
-                    print("writeAmount", amount)
                     machineNameList[0].bonusAmount = amount
                 }
             }catch{
@@ -133,7 +126,6 @@ class ConditionsInput: UIViewController, UITableViewDelegate,UITableViewDataSour
         }
         // 同じ機種を打ったことがある
         playResult = realm.objects(ResultTable.self).filter("machineID == %@", machineID, hallID).sorted(byKeyPath: "date")
-        print("machine", playResult)
         if playResult.count > 0{
             playResult.forEach{
                 amountArray.append($0.bonusAmount.components(separatedBy: "/").map{Double($0)!})

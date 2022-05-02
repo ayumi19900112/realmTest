@@ -48,6 +48,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineSearchBar.inputAccessoryView = doneToolbar
         
         getMachineData()
+        //NotificationCenterを定義
+        let notificationCenter = NotificationCenter.default
+
+        //observerを追加
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(checkLog),
+            name: UIApplication.didBecomeActiveNotification,
+            object: nil
+        )
+
+        
+
+        
+        
+         
     }
     override func viewWillAppear(_ animated: Bool) {
         getMachineData()
@@ -78,11 +94,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let index = self.machineNameTableView.indexPathForSelectedRow
         machineNameTableView.deselectRow(at: index!, animated: true)
         self.machine.setMachine(info: machineList[index!.row])
-        print(machine.bonusAmount)
         var result = realm.objects(MachineTable.self).filter("id == %@", self.machine.id)
-        print("result", result)
-        print("machineID;", self.machine.id)
-        print(machineList[index!.row]["playTime"])
+
         if result.count == 0{
             let machineObject: MachineTable = MachineTable(value: ["id": machine.id,
                                                                    "name": machine.name,
@@ -213,6 +226,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc
     func doneButtonTaped(sender: UIButton) {
         machineSearchBar.endEditing(true)
+    }
+    
+
+    @objc func checkLog(){
+        let UD = UD()
+        print("投資金額：", UD.getInvestment())
+    }
+    
+    func loadData() -> CurrentLogViewController! {
+        guard let data = UserDefaults.standard.data(forKey: "data") else {
+            return nil
+        }
+        return try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CurrentLogViewController
     }
     
 }

@@ -34,6 +34,7 @@
 		E23E9F4027878B9D00B939E4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E23E9F3F27878B9D00B939E4 /* Alamofire */; };
 		E23E9F4227878C0500B939E4 /* InsertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23E9F4127878C0500B939E4 /* InsertData.swift */; };
 		E23E9F4427886A8F00B939E4 /* DeleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23E9F4327886A8F00B939E4 /* DeleteData.swift */; };
+		E23E9F4827B2139500B939E4 /* UD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23E9F4727B2139500B939E4 /* UD.swift */; };
 		E2664E1226EBA304000C038D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1126EBA304000C038D /* AppDelegate.swift */; };
 		E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1326EBA304000C038D /* SceneDelegate.swift */; };
 		E2664E1626EBA304000C038D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2664E1526EBA304000C038D /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		E2E927BC272037B800618779 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E927BA272037B700618779 /* DetailTableViewCell.swift */; };
 		E2E927BD272037B800618779 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E927BB272037B700618779 /* DetailTableViewCell.xib */; };
 		E2F939E927047DBA00230852 /* HallTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F939E827047DBA00230852 /* HallTable.swift */; };
+		E2FD4AB92812E63000E46136 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2FD4AB82812E63000E46136 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -113,6 +115,7 @@
 		E23D8429274BD6DD00067071 /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		E23E9F4127878C0500B939E4 /* InsertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertData.swift; sourceTree = "<group>"; };
 		E23E9F4327886A8F00B939E4 /* DeleteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteData.swift; sourceTree = "<group>"; };
+		E23E9F4727B2139500B939E4 /* UD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UD.swift; sourceTree = "<group>"; };
 		E2664E0E26EBA304000C038D /* PachinkoLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PachinkoLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2664E1126EBA304000C038D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2664E1326EBA304000C038D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 		E2E927BA272037B700618779 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		E2E927BB272037B700618779 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		E2F939E827047DBA00230852 /* HallTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallTable.swift; sourceTree = "<group>"; };
+		E2FD4AB82812E63000E46136 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 				E23E9F4027878B9D00B939E4 /* Alamofire in Frameworks */,
 				E210DCC9274EF41700690A6D /* RealmSwift in Frameworks */,
 				E210DCCC274EF7D300690A6D /* FSCalendar in Frameworks */,
+				E2FD4AB92812E63000E46136 /* StoreKit.framework in Frameworks */,
 				E210DCC7274EF41700690A6D /* Realm in Frameworks */,
 				67322E135915CD42A12410E1 /* Pods_PachinkoLog.framework in Frameworks */,
 			);
@@ -173,6 +178,7 @@
 		B4F0CAB057DE53850A7C338E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2FD4AB82812E63000E46136 /* StoreKit.framework */,
 				787D7A9B4FC115084964B9F6 /* Pods_PachinkoLog.framework */,
 			);
 			name = Frameworks;
@@ -284,6 +290,7 @@
 				E2E927BB272037B700618779 /* DetailTableViewCell.xib */,
 				E2E9279A2712B91C00618779 /* Calc.swift */,
 				E2664E5926F36B30000C038D /* CurrentLogViewController.swift */,
+				E23E9F4727B2139500B939E4 /* UD.swift */,
 				E2C09BF927652D5D006FD575 /* YuTime.swift */,
 				E2E92785270DCB3D00618779 /* BonusAmountTableViewCell.xib */,
 				E2664E3226F0D99F000C038D /* ConditionsInput.swift */,
@@ -476,6 +483,7 @@
 				E203CB572757635600CEEFEA /* AnalysisCategoryViewController.swift in Sources */,
 				E2664E1426EBA304000C038D /* SceneDelegate.swift in Sources */,
 				E2220798274F5B8C00CF685F /* AnalysisTableViewCell.swift in Sources */,
+				E23E9F4827B2139500B939E4 /* UD.swift in Sources */,
 				E26B2F9E26FCB5910051607A /* ResultTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

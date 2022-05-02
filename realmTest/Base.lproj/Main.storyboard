@@ -350,7 +350,7 @@
         <!--ログ中…-->
         <scene sceneID="wuf-TB-Fwc">
             <objects>
-                <viewController id="pUc-G7-2XA" customClass="CurrentLogViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentLogViewController" id="pUc-G7-2XA" customClass="CurrentLogViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hoH-T8-R4J">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,6 +496,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0円" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwf-0N-GdS">
                                                 <rect key="frame" x="165.33333333333331" y="94.666666666666629" width="24.666666666666657" height="18"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -524,9 +525,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="w6s-kq-bdm" appends="YES" id="ZyF-j0-qmi"/>
-                                                </connections>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -823,11 +821,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ko0-wa-7GY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="w6s-kq-bdm">
-                    <connections>
-                        <action selector="changeToYT:" destination="pUc-G7-2XA" id="jqG-H2-QWU"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4623.0769230769229" y="112.32227488151658"/>
         </scene>
@@ -1513,7 +1506,8 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zi7-wd-mAz">
                                 <rect key="frame" x="5" y="203.66666666666666" width="186.33333333333334" height="26.333333333333343"/>
-                                <string key="text">※最小景品単価を入力してください。例：200円/55玉</string>
+                                <string key="text">※最小景品単価を入力してください。
+例：200円/55玉</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>

@@ -98,10 +98,17 @@ class YuTime{
             var motitanka = ((heikinkaishuutamasuu / tenjoukomiooatarikakuritu) - (250.0 / turnOver)) * rate
             var genkintanka = (heikinkaishuutamasuu / tenjoukomiooatarikakuritu * rate) - (1000.0 * (250.0 / Double(rental)) / turnOver)
             yuValue = Int((motitanka * rateHaveBall + genkintanka * (1.0 - rateHaveBall)) * tenjoukomiooatarikakuritu)
+            
+            
+            print(heikintoushitamasuu)
         }
         return flag
     }
     
-    
+    func aveInvestBall()  -> Int{
+        
+        
+        return 0
+    }
     
 }

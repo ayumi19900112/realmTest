@@ -196,6 +196,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             try! realm.write{
                 realm.add(result)
             }
+            //let UD = UD()
+            UD().allRemove()
             let alert2: UIAlertController = UIAlertController(title: "貯玉確認", message: "貯玉後:\(calc.getCurrentPos())玉", preferredStyle:  UIAlertController.Style.alert)
             // OKボタン
             let defaultAction2: UIAlertAction = UIAlertAction(title: "貯玉する", style: UIAlertAction.Style.default, handler:{ [self]
@@ -289,6 +291,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             clv.returnTop()
+            UD().allRemove()
             dismiss(animated: true)
         })
         // キャンセルボタン

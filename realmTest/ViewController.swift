@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("realmのパス：\(Realm.Configuration.defaultConfiguration.fileURL!)")        //Realmの保存場所
+        print("realmパス：\(Realm.Configuration.defaultConfiguration.fileURL!)")        //Realmの保存場所
         self.machineNameTableView.delegate = self
         self.machineNameTableView.dataSource = self
         machineSearchBar.delegate = self

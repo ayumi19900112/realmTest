@@ -5,6 +5,7 @@
 
 import UIKit
 import RealmSwift
+import FirebaseCore
 
 
 @main
@@ -16,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // マイグレーション処理
         migration()
+        FirebaseApp.configure()
+        FirestoreExtention.PremiumSubscription(ProductID: "test", Expired: Date(), items: "test1") { success in
+            print(success, "testSubsc")
+        }
         return true
       }
 

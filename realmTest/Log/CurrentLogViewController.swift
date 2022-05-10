@@ -614,30 +614,13 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         investmentStepper.value = 0.0
         
+        
     }
     
     // MARK: - UserDefaults
     //userDefaultsに保存
     func saveUserDefaults(){
-        //userDefaultsに保存
-        /*
-        ud.firstPos = self.firstPos
-        ud.firstStart = self.firstStart
-        ud.logStart = self.logStart
-        ud.logBonus = self.logFlag
-        ud.investment = Int(investmetTextField.text!)!
-        ud.currentPos = Int(currentBallTextField.text!)!
-        ud.number = self.number
-        ud.machineID = self.machineID
-        ud.hallID = self.hallID
-        ud.setData()
-         */
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
-        else{
-            return
-        }
-        UserDefaults.standard.set(data, forKey: "data")
-        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(true, forKey: "editing")
         
     }
     
@@ -650,6 +633,19 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // MARK: -仕事量タップしたとき
     
+    @IBAction func workLabelTapped(_ sender: Any) {
+        let nextView = self.storyboard?.instantiateViewController(withIdentifier: "ExpectedBalance") as! ExpectedBalanceViewController
+        if(calc.getHaveBallRate(money: Int(self.investmetTextField!.text!)!).isNaN){
+            return
+        }
+        nextView.rateMoney = self.rateMoney
+        nextView.rateBall = self.rateBall
+        nextView.rateHaveBall = calc.getHaveBallRate(money: Int(self.investmetTextField!.text!)!)
+        nextView.machineID = self.machineID
+        nextView.rateCycle = calc.getTurnOver()
+        //self.navigationController?.pushViewController(nextView, animated: true)
+        self.present(nextView, animated: true, completion: nil)
+        }
     
     
 }

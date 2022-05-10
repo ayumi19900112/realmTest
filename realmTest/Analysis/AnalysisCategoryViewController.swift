@@ -50,7 +50,11 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
         datePickerFin.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-        datePickerBegin.date = formatter.date(from: "2021/01/01")!
+        if SaveUserDefaluts().getStartDate() == nil{
+            datePickerBegin.date = formatter.date(from: "2021/01/01")!
+        }else{
+            datePickerBegin.date = SaveUserDefaluts().getStartDate()
+        }
         datePickerBegin.minimumDate = formatter.date(from: "2021/01/01")!
         datePickerBegin.maximumDate = Date()
         datePickerFin.minimumDate = formatter.date(from: "2021/01/01")!
@@ -102,6 +106,7 @@ class AnalysisCategoryViewController: UIViewController, UITableViewDelegate, UIT
     @objc func datePickerChanged(picker: UIDatePicker) {
         if picker == self.datePickerBegin{
             self.datePickerFin.minimumDate = self.datePickerBegin.date
+            SaveUserDefaluts().setStartDate(date: self.datePickerBegin.date)
         }else if picker == self.datePickerFin{
             self.datePickerBegin.maximumDate = self.datePickerFin.date
         }

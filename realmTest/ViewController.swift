@@ -48,9 +48,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineSearchBar.inputAccessoryView = doneToolbar
         
         getMachineData()
+        
+        print("カウント", self.machineList.count)
+        
+        for i in 0 ..< machineList.count{
+            print("i = ", i)
+            print(self.machineList[i]["name"])
+        }
         //NotificationCenterを定義
         let notificationCenter = NotificationCenter.default
-
+/*
         //observerを追加
         notificationCenter.addObserver(
             self,
@@ -58,7 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             name: UIApplication.didBecomeActiveNotification,
             object: nil
         )
-
+*/
         
 
         
@@ -92,6 +99,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let index = self.machineNameTableView.indexPathForSelectedRow
+        self.machineSearchBar.text = ""
         machineNameTableView.deselectRow(at: index!, animated: true)
         self.machine.setMachine(info: machineList[index!.row])
         var result = realm.objects(MachineTable.self).filter("id == %@", self.machine.id)
@@ -228,11 +236,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineSearchBar.endEditing(true)
     }
     
-
+/*
     @objc func checkLog(){
         let UD = UD()
         print("投資金額：", UD.getInvestment())
     }
+ */
     
     func loadData() -> CurrentLogViewController! {
         guard let data = UserDefaults.standard.data(forKey: "data") else {

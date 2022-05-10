@@ -6,7 +6,9 @@ target 'PachinkoLog' do
     pod 'Charts', '~> 3.6'
   use_frameworks!
 
-
+  pod 'Firebase'
   # Pods for PachinkoLog
-
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'KeychainAccess'
 end

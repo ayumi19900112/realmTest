@@ -11,7 +11,6 @@ class AtermViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     //プライバシーポリシー・お問い合わせ

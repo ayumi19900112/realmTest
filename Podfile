@@ -11,4 +11,6 @@ target 'PachinkoLog' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'KeychainAccess'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'PKHUD'
 end

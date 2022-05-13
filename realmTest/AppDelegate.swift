@@ -6,7 +6,13 @@
 import UIKit
 import RealmSwift
 import FirebaseCore
+import GoogleMobileAds
 
+
+let bannerTestCode = "ca-app-pub-3940256099942544/2934735716" //テスト
+let bannerCode = "ca-app-pub-9107991111278719~9091152654"   //本番用
+let videoTestCode = "ca-app-pub-3940256099942544/1712485313"  //テスト
+let videoCode = "ca-app-pub-9107991111278719/3318831666"    //本番用
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirestoreExtention.PremiumSubscription(ProductID: "test", Expired: Date(), items: "test1") { success in
             print(success, "testSubsc")
         }
+        
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "5F1608BF-0233-4AE8-AE93-1A9B7C6ADA01" ]   //本番あげるときに消す
+        //Google広告
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
       }
 

@@ -280,7 +280,7 @@ class Calc{
     
     
     
-    //MARK:- その他
+    //MARK: - その他
     
     func start(startList: [Int], bonusList: [String]) -> Int{
         //start計算

@@ -9,7 +9,7 @@ import RealmSwift
 
 
 
-class PlayLogViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate{
+class PlayLogViewController: GoogleAdmobViewController, FSCalendarDelegate, FSCalendarDataSource, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate{
 
     
     @IBOutlet weak var fsCalendar: FSCalendar!

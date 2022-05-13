@@ -190,19 +190,19 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let defaultAction: UIAlertAction = UIAlertAction(title: "稼働終了する", style: UIAlertAction.Style.default, handler:{ [self]
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
+            UserDefaults.standard.set(false, forKey: "editing")
             let realm = try! Realm()
             
             let result = ResultTable(value: ["date": rtToday, "hallID": rtHallID, "machineID": rtMachineID, "playResult": rtPlayResult, "workResult": rtWrokResult, "start": rtStart, "bonusCount": rtBonusCount, "bonusAmount": rtBonusAmount, "investment": rtInvestment, "rental": rtRental, "rateMoney": rtRateMoney, "rateBall": rtRateBall, "inPOS": rtInPos, "memo": "", "number": rtNumber, "defference": rtDifference])
             try! realm.write{
                 realm.add(result)
             }
-            //let UD = UD()
-            UD().allRemove()
             let alert2: UIAlertController = UIAlertController(title: "貯玉確認", message: "貯玉後:\(calc.getCurrentPos())玉", preferredStyle:  UIAlertController.Style.alert)
             // OKボタン
             let defaultAction2: UIAlertAction = UIAlertAction(title: "貯玉する", style: UIAlertAction.Style.default, handler:{ [self]
                 // ボタンが押された時の処理を書く（クロージャ実装）
                 (action: UIAlertAction!) -> Void in
+                UserDefaults.standard.set(false, forKey: "editing")
                 let realm = try! Realm()
                 
                 let resultHall = realm.objects(HallTable.self).filter("name == %@", self.hallName).first

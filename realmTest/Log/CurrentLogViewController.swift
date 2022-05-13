@@ -10,7 +10,21 @@ import SwiftUI
 
 
 
-class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource, UITabBarDelegate {
+class CurrentLogViewController: GoogleAdmobTopViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate,UIPickerViewDataSource, UITabBarDelegate, dismissPlayActionDelegate {
+    func resultWithPlayRewarded(result: Int, senderTag: Int) {
+        print("動画を最後まで再生された")
+        ad = true
+        printResult()
+    }
+    
+    func ErrorLoadWithPlay(senderTag: Int) {
+        print("動画を途中で終了した")
+        ad = false
+        adFailed()
+        alert(message: "動画を完了するまで計算できません")
+    }
+    
+    
     @IBOutlet weak var titleHallLabel: UILabel!
     @IBOutlet weak var titleMachineLabel: UILabel!
     @IBOutlet weak var resultTimeLabel: UILabel!
@@ -25,7 +39,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     var hallID: Int!            //ホールID
     var machineID: Int!         //機種ID
     var rental: Int!            //貸し玉
-    var number: Int!
+    var number: Int!            //台番号
     
     var logStart: [Int] = []          // スタート履歴
     var logFlag = ["開始"]      // 大当たり履歴
@@ -33,6 +47,8 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     var bonusAmountArray: [Double] = []
     var yutime = YuTime()
     var pivotAmountIndex = 1     //大当たり基準をどれにするか
+    
+    var ad = false
     
     //Itemの紐付け
     //input
@@ -80,13 +96,19 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        if UserDefaults.standard.bool(forKey: "editing"){
+            setConditionData()
+        }
+         */
+        print("ビューディドロード")
         self.navigationController?.navigationBar.isHidden = true        //ナビゲーションバー非表示
         self.navigationController?.interactivePopGestureRecognizer!.isEnabled = false       //スワイプで戻る無効
         
         bonusTableView.register(UINib(nibName: "BonusAmountTableViewCell", bundle: nil),forCellReuseIdentifier:"BonusAmountCell")
         logTableView.register(UINib(nibName: "LogTableViewCell", bundle: nil),forCellReuseIdentifier:"LogCell")
         
-
+        
         if logStart.count == 0{
             logStart.append(firstStart)
         }
@@ -100,15 +122,15 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         bonusPickerView.dataSource = self
         
         //realm
-        machineList = realm.objects(MachineTable.self).filter("id == %@", machineID!)
-        hallList = realm.objects(HallTable.self).filter("id = %@", hallID!)
+        machineList = realm.objects(MachineTable.self).filter("id == %@", self.machineID!)
+        hallList = realm.objects(HallTable.self).filter("id = %@", self.hallID!)
         titleMachineLabel.text = machineList[0].name
         titleHallLabel.text = hallList[0].name
         
         //大当たり出玉
         setMachineInfo()
         //pickerに表示する文字列
-         setPickerList()
+        setPickerList()
         //calcset
         bonusAmountArray = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
         setCalc()
@@ -129,11 +151,11 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         ytCountLabel.text = ""
         ytCountResultLabel.text = ""
         /*
-        for i in 0 ..< bonusRate.count{
-            let amount = bonusAmount[1] * bonusRate[i]
-            bonusAmountArray[i] = amount
-        }
-        */
+         for i in 0 ..< bonusRate.count{
+         let amount = bonusAmount[1] * bonusRate[i]
+         bonusAmountArray[i] = amount
+         }
+         */
         //PickerViewの選択状態を""にする
         bonusPickerView.selectRow(1, inComponent: 0, animated: false)
         
@@ -146,9 +168,9 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         investmetTextField.inputAccessoryView = doneToolbar
         currentBallTextField.inputAccessoryView = doneToolbar
         currentStartTextField.inputAccessoryView = doneToolbar
-           
+        
     }
-
+    
     
     // MARK:- tableView
     //要素数
@@ -180,7 +202,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-
+    
     
     // セルの編集を許可
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -190,12 +212,12 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             return false
         }
     }
-
+    
     // セルの削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             actionSheet(indexPath: indexPath)
-       }
+        }
     }
     
     // セルがタップされたとき
@@ -207,22 +229,22 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
+    
     
     func textFieldDidEndEditing(textField: UITextField) {
-      if let cell = textField.superview?.superview as? UITableViewCell,
-         let indexPath = bonusTableView.indexPath(for: cell){
-      }
+        if let cell = textField.superview?.superview as? UITableViewCell,
+           let indexPath = bonusTableView.indexPath(for: cell){
+        }
     }
-
     
     
-    // MARK:- Button
+    
+    // MARK: - Button
     //基準で設定
     @IBAction func setBonusAmountButton(_ sender: Any) {
         machineList = realm.objects(MachineTable.self).filter("id == %@", machineID!)
         let pa = machineList[0].bonusAmount.components(separatedBy: "/").map{Double($0)!}
-
+        
         for i in 1 ..< bonusAmountArray.count{
             if bonusName[i] != "小当R"{
                 bonusAmountArray[i] = round(pa[pivotAmountIndex] * (bonusRate[i] / bonusRate[pivotAmountIndex]) * 10) / 10
@@ -240,16 +262,31 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
                 machineList[0].bonusAmount = strArr.joined(separator: "/")
             }
         }catch {
-                print("Error")
+            print("Error")
         }
         bonusTableView.reloadData()
     }
     
     
+    @IBAction func tapedStartButtonClear(_ sender: Any) {
+        self.currentStartTextField.text = ""
+    }
     
-
-    //計算ボタン
+    
+    
+    
+    // MARK: -  計算ボタン
     @IBAction func calcButton(_ sender: Any){
+
+        let nextVC = GADRewardPlay()
+        nextVC.dismissPlayActionDelegate = self
+        self.present(nextVC, animated: true)
+        calcData()
+        
+        
+    }
+    
+    func calcData(){
         setMachineInfo()
         
         guard investmetTextField.text != "" else {
@@ -269,8 +306,6 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         //キーボードを閉じる
         view.endEditing(true)
-        //大当たり出玉を入れる
-        //setBonusAmount()
         
         //logList更新
         if logFlag.last != "" {
@@ -278,7 +313,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }else{
             logStart[logStart.count - 1] = Int(currentStartTextField.text!)!
         }
-
+        
         if bonusPickerView.selectedRow(inComponent: 0) != 1 && logFlag.last != ""{
             logFlag.append(pickerList[bonusPickerView.selectedRow(inComponent: 0)])
         }else{
@@ -289,8 +324,29 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         
-        //計算
 
+        
+        
+        //tableViewReload
+        logTableView.reloadData()
+        let section = self.logTableView.numberOfSections - 1
+        let row = self.logTableView.numberOfRows(inSection: section) - 1
+        let indexPath = NSIndexPath(row: row, section: section)
+        logTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+        bonusPickerView.selectRow(1, inComponent: 0, animated: false)
+        //currentStartTextField.text = ""
+        
+        
+        
+        
+        saveUserDefaults()      //userDefaultsに保存
+    }
+    
+    // MARK: - 計算結果を表示
+    func printResult(){
+        
+        //計算
+        
         setCalc()
         
         let start = calc.getStart()     //スタート
@@ -310,20 +366,10 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         self.resultHaveRate.text = "\(String(calc.getHaveBallRate(money: Int(investmetTextField!.text!)!)))%"
         
-
-        //tableViewReload
-        logTableView.reloadData()
-        let section = self.logTableView.numberOfSections - 1
-        let row = self.logTableView.numberOfRows(inSection: section) - 1
-        let indexPath = NSIndexPath(row: row, section: section)
-        logTableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
-        bonusPickerView.selectRow(1, inComponent: 0, animated: false)
-        currentStartTextField.text = ""
-        
         //計算結果ラベルに打刻
         let dt = Date()
         let dateFormatter = DateFormatter()
-
+        
         // DateFormatter を使用して書式とロケールを指定する
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "Hm", options: 0, locale: Locale(identifier: "ja_JP"))
         self.resultTimeLabel.text = "計算結果 \(dateFormatter.string(from: dt))"
@@ -345,30 +391,46 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         yutime.rental = self.rental
         
         yutime.getData()
-        if yutime.calcYuValue(){
-            ytLabel.text = "YT期待値"
-            ytResultLabel.text = "\(calc.intFormat(num: yutime.yuValue))円"
-            if yutime.yuValue > 0{
-                ytResultLabel.textColor = .blue
-            }else if yutime.yuValue < 0{
-                ytResultLabel.textColor = .red
+        if ad{
+            if yutime.calcYuValue(){
+                ytLabel.text = "YT期待値"
+                ytResultLabel.text = "\(calc.intFormat(num: yutime.yuValue))円"
+                if yutime.yuValue > 0{
+                    ytResultLabel.textColor = .blue
+                }else if yutime.yuValue < 0{
+                    ytResultLabel.textColor = .red
+                }else{
+                    ytResultLabel.textColor = .black
+                }
+                ytCountLabel.text = "YTまで"
+                ytCountResultLabel.text = "\(yutime.toYT)回転"
+                //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
             }else{
-                ytResultLabel.textColor = .black
+                
+                ytLabel.text = ""
+                ytResultLabel.text = ""
+                ytCountLabel.text = ""
+                ytCountResultLabel.text = ""
+                
             }
-            ytCountLabel.text = "YTまで"
-            ytCountResultLabel.text = "\(yutime.toYT)回転"
-            //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
         }else{
-            
-            ytLabel.text = ""
-            ytResultLabel.text = ""
-            ytCountLabel.text = ""
-            ytCountResultLabel.text = ""
-             
+            if yutime.calcYuValue(){
+                ytLabel.text = "YT期待値"
+                ytResultLabel.text = "＊＊＊＊円"
+                ytResultLabel.textColor = .black
+                ytCountLabel.text = "YTまで"
+                ytCountResultLabel.text = "＊＊＊＊回転"
+                //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
+            }else{
+                
+                ytLabel.text = ""
+                ytResultLabel.text = ""
+                ytCountLabel.text = ""
+                ytCountResultLabel.text = ""
+            }
+               
         }
         
-        
-        saveUserDefaults()      //userDefaultsに保存
 
     }
     
@@ -388,8 +450,8 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
             vc.clv = self
         }
     }
-
-    // MARK:-　変数に計算用の情報を代入
+    
+    // MARK: -　変数に計算用の情報を代入
     func setMachineInfo (){
         bonusName = machineList[0].bonusName.components(separatedBy: "/")
         totalProbability = machineList[0].totalProbability.components(separatedBy: "/").map{Double($0)!}
@@ -429,8 +491,8 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-
-    // MARK:- pickerView
+    
+    // MARK: - pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -440,9 +502,9 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-          return pickerList[row]
+        return pickerList[row]
     }
-
+    
     //MARK:- その他
     //完了ボタンタップ時に、キーボードを閉じる
     @objc
@@ -454,11 +516,11 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //アラート
     private func alert(message: String) {
-         let alertController = UIAlertController(title: "エラー",message: message, preferredStyle: .alert)
-         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-         alertController.addAction(action)
-         present(alertController, animated: true, completion: nil)
-     }
+        let alertController = UIAlertController(title: "エラー",message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
     
     private func actionSheet(indexPath: IndexPath) {
         let alert: UIAlertController = UIAlertController(title: "確認", message: "削除してもいいですか？", preferredStyle:  UIAlertController.Style.alert)
@@ -479,7 +541,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         alert.addAction(cancelAction)
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
-
+        
     }
     
     func setCalc() {
@@ -498,6 +560,7 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         calc.setBonusTotalList(array: totalProbability)
         calc.setBonusAmountList(array: bonusAmountArray)
         calc.calcBonusCount()
+        //currentStartTextField.text = ""
     }
     
     func returnTop(){
@@ -538,29 +601,30 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func changeToYT(_ sender: Any) {
         var alertTextField: UITextField?
-
-                let alert = UIAlertController(
-                    title: "到達までのスタート数を変更",
-                    message: "低確率\(machineList[0].playTime)回転で遊タイム突入",
-                    preferredStyle: UIAlertController.Style.alert)
-                alert.addTextField(
-                    configurationHandler: {(textField: UITextField!) in
-                        alertTextField = textField
-                        textField.text = String(self.yutime.toYT)
-                        textField.placeholder = "到達まであと何回転かを入力"
-                        textField.keyboardType = .numberPad
-                        // textField.isSecureTextEntry = true
-                })
-                alert.addAction(
-                    UIAlertAction(
-                        title: "Cancel",
-                        style: UIAlertAction.Style.cancel,
-                        handler: nil))
-                alert.addAction(
-                    UIAlertAction(
-                        title: "OK",
-                        style: UIAlertAction.Style.default) { _ in
-                        if let text = alertTextField?.text {
+        
+        let alert = UIAlertController(
+            title: "到達までのスタート数を変更",
+            message: "低確率\(machineList[0].playTime)回転で遊タイム突入",
+            preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField(
+            configurationHandler: {(textField: UITextField!) in
+                alertTextField = textField
+                textField.text = String(self.yutime.toYT)
+                textField.placeholder = "到達まであと何回転かを入力"
+                textField.keyboardType = .numberPad
+                // textField.isSecureTextEntry = true
+            })
+        alert.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertAction.Style.cancel,
+                handler: nil))
+        alert.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: UIAlertAction.Style.default) { _ in
+                    if let text = alertTextField?.text {
+                        if self.ad{
                             self.ytCountResultLabel.text = text + "回転"
                             self.yutime.toYT = Int(text)!
                             if self.yutime.calcYuValue(){
@@ -573,12 +637,13 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
                                     self.ytResultLabel.textColor = .black
                                 }
                             }
-                            
                         }
+                        
                     }
-                )
-
-                self.present(alert, animated: true, completion: nil)
+                }
+        )
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - stepper
@@ -620,15 +685,42 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - UserDefaults
     //userDefaultsに保存
     func saveUserDefaults(){
+        /*
         UserDefaults.standard.set(true, forKey: "editing")
-        
+        UserDefaults.standard.set(self.firstStart, forKey: "firstStart")
+        UserDefaults.standard.set(self.firstPos, forKey: "firstPos")
+        UserDefaults.standard.set(self.hallID, forKey: "hallID")
+        UserDefaults.standard.set(self.machineID, forKey: "machineID")
+        UserDefaults.standard.set(self.rateBall, forKey:"rateBall")
+        UserDefaults.standard.set(self.rateMoney, forKey:"rateMoney")
+        UserDefaults.standard.set(self.rental, forKey:"rental")
+        UserDefaults.standard.set(self.number, forKey:"number")
+        UserDefaults.standard.set(Int(self.investmetTextField.text!), forKey:"investment")
+        UserDefaults.standard.set(self.logStart, forKey: "logStart")
+        UserDefaults.standard.set(self.logFlag, forKey:"logFlag")
+        UserDefaults.standard.set(self.bonusCount, forKey: "bonusCout")
+        UserDefaults.standard.set(self.bonusAmountArray, forKey: "bonusAmount")
+         */
     }
     
-    func showUserDefaults(){
-        print("投資金額：", ud.getInvestment())
-        print("投資金額：", ud.getInvestment())
-        print("投資金額：", ud.getInvestment())
-        print("投資金額：", ud.getInvestment())
+    func setConditionData(){
+        /*
+         print("分岐されました！！")
+         self.firstStart = UserDefaults.standard.integer(forKey: "firstStart")
+         self.firstPos = UserDefaults.standard.integer(forKey: "firstPos")
+         self.hallID = UserDefaults.standard.integer(forKey: "hallID")
+         self.machineID = UserDefaults.standard.integer(forKey: "machineID")
+         self.rateBall = UserDefaults.standard.double(forKey: "rateBall")
+         self.rateMoney = UserDefaults.standard.double(forKey: "rateMoney")
+         self.rental = UserDefaults.standard.integer(forKey: "rental")
+         self.number = UserDefaults.standard.integer(forKey: "number")
+         self.investmetTextField.text = String(UserDefaults.standard.integer(forKey: "investment"))
+         self.logStart = UserDefaults.standard.array(forKey: "logStart") as? [Int] ?? []
+         self.logFlag = UserDefaults.standard.stringArray(forKey: "logFlag") as? [String] ?? []
+         self.bonusCount = UserDefaults.standard.array(forKey: "bonusCount") as? [Int] ?? []
+         self.bonusAmountArray = UserDefaults.standard.array(forKey: "bonusAmount") as? [Double] ?? []
+         */
+        
     }
     
     // MARK: -仕事量タップしたとき
@@ -645,7 +737,32 @@ class CurrentLogViewController: UIViewController, UITableViewDelegate, UITableVi
         nextView.rateCycle = calc.getTurnOver()
         //self.navigationController?.pushViewController(nextView, animated: true)
         self.present(nextView, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - 広告を最後まで再生しなかった場合
+    func adFailed(){
+        self.resultTurnOverLabel.text = "広告動画を"
+        self.resultBOPLabel.text = "最後まで再生"
+        self.resultWorkLabel.text = "してください"
+        self.resultTurnOverLabel.textColor = .red
+        self.resultBOPLabel.textColor = .red
+        self.resultWorkLabel.textColor = .red
+        
+        if yutime.calcYuValue(){
+            ytLabel.text = "YT期待値"
+            ytResultLabel.text = "＊＊＊＊円"
+            ytResultLabel.textColor = .black
+            ytCountLabel.text = "YTまで"
+            ytCountResultLabel.text = "＊＊＊＊回転"
+            //ytCountResultLabel.text = "\(yutime.yuCount - yutime.currentStart)回転"
+        }else{
+            
+            ytLabel.text = ""
+            ytResultLabel.text = ""
+            ytCountLabel.text = ""
+            ytCountResultLabel.text = ""
+            
         }
-    
-    
+    }
 }

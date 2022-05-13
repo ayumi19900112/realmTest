@@ -7,10 +7,11 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ViewController: GoogleAdmobViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
-    
+
     @IBOutlet weak var machineNameTableView: UITableView!
     @IBOutlet weak var machineSearchBar: UISearchBar!
     @IBOutlet weak var dataCountLabel: UILabel!
@@ -20,6 +21,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var indexNum = Int()
     var machine = Machine()
     
+    
+    
+    
     var articles:[[String: Any]] = []
     var machineList:[[String: Any]] = []{
         didSet{
@@ -27,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-        
+    
     
     
     override func viewDidLoad() {
@@ -57,26 +61,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         //NotificationCenterを定義
         let notificationCenter = NotificationCenter.default
-/*
-        //observerを追加
-        notificationCenter.addObserver(
-            self,
-            selector: #selector(checkLog),
-            name: UIApplication.didBecomeActiveNotification,
-            object: nil
-        )
-*/
+        /*
+         //observerを追加
+         notificationCenter.addObserver(
+         self,
+         selector: #selector(checkLog),
+         name: UIApplication.didBecomeActiveNotification,
+         object: nil
+         )
+         */
+        
         
 
-        
-        
-         
     }
     override func viewWillAppear(_ animated: Bool) {
         getMachineData()
         
     }
-
+    
     
     // MARK: - TableViewの処理
     //tableViewに表示する行数を返す
@@ -93,7 +95,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = "\(self.machineList[indexPath.row]["name"] as! String)(1/\(self.machineList[indexPath.row]["probability"] as! String))"
         return cell
     }
-
+    
     // MARK: - segueの処理
     // セグエ実行前処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,7 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineNameTableView.deselectRow(at: index!, animated: true)
         self.machine.setMachine(info: machineList[index!.row])
         var result = realm.objects(MachineTable.self).filter("id == %@", self.machine.id)
-
+        
         if result.count == 0{
             let machineObject: MachineTable = MachineTable(value: ["id": machine.id,
                                                                    "name": machine.name,
@@ -178,7 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         search()
     }
-         
+    
     
     func search(){
         var word = machineSearchBar.text!
@@ -236,12 +238,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         machineSearchBar.endEditing(true)
     }
     
-/*
-    @objc func checkLog(){
-        let UD = UD()
-        print("投資金額：", UD.getInvestment())
-    }
- */
+    /*
+     @objc func checkLog(){
+     let UD = UD()
+     print("投資金額：", UD.getInvestment())
+     }
+     */
     
     func loadData() -> CurrentLogViewController! {
         guard let data = UserDefaults.standard.data(forKey: "data") else {
@@ -249,5 +251,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? CurrentLogViewController
     }
+    
+    
+    
     
 }

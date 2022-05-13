@@ -12,7 +12,7 @@
         <!--機種を選択してください-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="StartViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -685,6 +685,16 @@
                                             <action selector="moneyStepper:" destination="pUc-G7-2XA" eventType="valueChanged" id="YdA-CZ-HAY"/>
                                         </connections>
                                     </stepper>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFh-O6-U0L">
+                                        <rect key="frame" x="88" y="147.66666666666666" width="104" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Start Clear"/>
+                                        <connections>
+                                            <action selector="tapedStartButtonClear:" destination="pUc-G7-2XA" eventType="touchUpInside" id="xdm-TG-GB2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
@@ -696,6 +706,7 @@
                                     <constraint firstAttribute="trailing" secondItem="SNL-3W-4Sz" secondAttribute="trailing" constant="5" id="BJe-cB-hcr"/>
                                     <constraint firstItem="Nxt-ih-qPi" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="ByT-jH-zar"/>
                                     <constraint firstItem="Nxt-ih-qPi" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="C5F-Wl-Fjm"/>
+                                    <constraint firstItem="IFh-O6-U0L" firstAttribute="leading" secondItem="txR-SS-lp1" secondAttribute="trailing" constant="3" id="EFK-lo-AW9"/>
                                     <constraint firstItem="sEh-HU-30G" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="EMm-Mu-HdD"/>
                                     <constraint firstItem="LXn-Qb-qNA" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="Ec2-c8-2KU"/>
                                     <constraint firstItem="sfb-SZ-gQI" firstAttribute="top" secondItem="sEh-HU-30G" secondAttribute="bottom" constant="3" id="HZS-f1-Iwr"/>
@@ -706,11 +717,13 @@
                                     <constraint firstItem="Nxt-ih-qPi" firstAttribute="top" secondItem="sfb-SZ-gQI" secondAttribute="bottom" constant="5" id="W1V-AW-rLY"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gSt-cU-GeK" secondAttribute="trailing" constant="20" symbolic="YES" id="WTX-FY-Mm5"/>
                                     <constraint firstItem="0uo-7F-GzH" firstAttribute="centerY" secondItem="rnv-aO-sat" secondAttribute="centerY" id="YeG-dC-Ea1"/>
+                                    <constraint firstItem="IFh-O6-U0L" firstAttribute="centerY" secondItem="txR-SS-lp1" secondAttribute="centerY" id="ZGe-5A-EyS"/>
                                     <constraint firstItem="8ku-bH-BLc" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="ZHh-gl-wuE"/>
                                     <constraint firstItem="gSt-cU-GeK" firstAttribute="leading" secondItem="dFS-Qi-ETB" secondAttribute="leading" constant="5" id="c6T-Um-jyk"/>
                                     <constraint firstAttribute="trailing" secondItem="0uo-7F-GzH" secondAttribute="trailing" constant="5" id="cIq-WR-fOJ"/>
                                     <constraint firstItem="6pG-e2-Unr" firstAttribute="top" secondItem="LXn-Qb-qNA" secondAttribute="bottom" constant="10" id="dax-4D-H73"/>
                                     <constraint firstItem="SNL-3W-4Sz" firstAttribute="centerY" secondItem="sfb-SZ-gQI" secondAttribute="centerY" id="eKj-hj-BHO"/>
+                                    <constraint firstAttribute="trailing" secondItem="IFh-O6-U0L" secondAttribute="trailing" constant="3" id="eaX-iV-Jvs"/>
                                     <constraint firstItem="8ku-bH-BLc" firstAttribute="top" secondItem="rnv-aO-sat" secondAttribute="bottom" constant="5" id="h4s-g7-WxZ"/>
                                     <constraint firstItem="gSt-cU-GeK" firstAttribute="top" secondItem="txR-SS-lp1" secondAttribute="bottom" constant="5" id="huP-Sa-r6u"/>
                                     <constraint firstItem="Nxt-ih-qPi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rnv-aO-sat" secondAttribute="leading" id="ikS-Ig-s0a"/>
@@ -1744,7 +1757,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="WpO-MG-ob5">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RWr-TI-aOU" customClass="TabBarController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StartViewController" automaticallyAdjustsScrollViewInsets="NO" id="RWr-TI-aOU" customClass="TabBarController" customModule="PachinkoLog" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p7B-31-XgR">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
